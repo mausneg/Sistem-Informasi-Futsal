@@ -221,9 +221,4 @@ body{
 .content-main-header>div>i{
     font-size: 20px;
 }
-.footer{
-    height: 5%;
-    width: 100%;
-    background-color: var(--bg-first);
-}
 

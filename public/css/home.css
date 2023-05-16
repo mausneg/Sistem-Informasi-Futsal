@@ -541,9 +541,4 @@ body{
     color: var(--text-first);
     background-color: var(--bg-seventh);
 }
-.footer{
-    height: 5%;
-    width: 100%;
-    background-color: var(--bg-first);
-}
 

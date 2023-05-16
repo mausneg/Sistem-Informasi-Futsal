@@ -25,7 +25,7 @@
 			<h3 class="if-you">If you don’t have an account register</h3>
 			<div class="you-can-register">
 				<h3 class="you-can">You can</h3>
-				<a href="signup.html" class="register">Register here!</a>
+				<a href="../register" class="register">Register here!</a>
 			</div>
 		</div>
 		<form method="post" action="">

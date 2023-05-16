@@ -18,6 +18,12 @@ function showHide(className,id){
         eyeIcon.classList.add("fa-eye-slash") 
     }
 }
-$(".btn-register").click(function() { 
-    window.location.href = "signin.html"
+$('.password, .confirm').on('keyup', function () {
+    if ($('.password').val() == $('.confirm').val()) {
+        $('.message').html('Matching').css('color', 'green')
+        $(".btn-register").removeAttr("disabled");
+    } else{
+        $('.message').html('Not Matching').css('color', 'red')
+        $(".btn-register").attr("disabled", "disabled");
+    }
 });

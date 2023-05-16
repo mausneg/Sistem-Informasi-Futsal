@@ -1,6 +1,6 @@
 <?php
     class App{
-        protected $controller = "landing";
+        protected $controller = "login";
         protected $method = "index";
         protected $params = [];
 

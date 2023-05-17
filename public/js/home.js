@@ -1,3 +1,6 @@
+$(".flasher-button").click(function () { 
+    $(".container-flasher").hide();
+});
 document.getElementsByClassName("notification")[0].addEventListener("mouseenter",function(){
     openList(this,"Notification")
 })

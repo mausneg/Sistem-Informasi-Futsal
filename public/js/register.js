@@ -1,3 +1,6 @@
+$(".flasher-button").click(function () { 
+    $(".container-flasher").hide();
+});
 document.getElementsByClassName("show-hide")[0].addEventListener("click",function(){
     showHide("password","eye-icon-pass")
 })

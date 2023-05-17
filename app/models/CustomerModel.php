@@ -14,6 +14,7 @@
             $this->db->bind("contact",$data["contact"]);
             $this->db->bind("password",password_hash($data["password"],PASSWORD_DEFAULT));
             $this->db->execute();
+            return $this->db->row();
         }
     }
 ?>`

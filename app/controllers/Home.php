@@ -1,6 +1,10 @@
 <?php
     class Home extends Controller{
         public function index(){
+            if (!isset($_SESSION["account"])) {
+                header("Location: /login");
+                exit();
+            }
             $data["title"] = "Home";
             $data["style"] = "home";
             $data["script"] = "home";

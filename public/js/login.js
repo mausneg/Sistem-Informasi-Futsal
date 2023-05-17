@@ -1,3 +1,6 @@
+$(".flasher-button").click(function () { 
+    $(".container-flasher").hide();
+});
 document.getElementsByClassName("show-hide")[0].addEventListener("click",function(){
     const password = document.getElementsByClassName("password")[0]
     const eyeIcon = document.getElementById("eye-icon")
@@ -12,6 +15,3 @@ document.getElementsByClassName("show-hide")[0].addEventListener("click",functio
         eyeIcon.classList.add("fa-eye-slash") 
     }
 })
-$(".btn-login").click(function() { 
-    window.location.href = "home.html"
-});

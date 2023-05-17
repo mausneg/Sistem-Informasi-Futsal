@@ -15,13 +15,49 @@ body{
     height: 100vh;
 }
 .header{
-    height: 12%;
+    display: flex;
+    justify-content: space-between;
+    height: 15%;
 }
 .logo{
     height: 100%;
     padding-top: 5px;
     padding-left: 15px;
     box-sizing: border-box;
+
+}
+.container-flasher{
+    width: 400px;
+    height: 50px;
+    margin-right: 40%;
+    margin-top: 5px;
+}
+.flasher{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.flasher-fail{
+    color: rgb(205, 34, 69);
+    background-color: rgba(205, 34, 68, 0.361);
+    border: 2px rgb(205, 34, 69) solid;
+}
+.flasher-success{
+    color: #2a9d8f;
+    background-color: #2a9d9071;
+    border: 2px #2a9d8f solid;
+}
+.flasher-button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
 
 }
 .content{
@@ -156,12 +192,4 @@ form{
 a{
     text-decoration: none;
     cursor: pointer;
-}
-.footer{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    height: 8%;
-    color: var(--text-first);
-    background-color: var(--bg-first);
 }

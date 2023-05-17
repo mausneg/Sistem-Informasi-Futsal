@@ -32,7 +32,9 @@
             $this->statement->bindValue($arg,$value,$type);
         }
         public function execute(){
-            $this->statement->execute();
+            try {
+                $this->statement->execute();
+            } catch (\Throwable $th) {}
         }
         public function results(){
             $this->execute();
@@ -40,7 +42,10 @@
         }
         public function result(){
             $this->execute();
-            return $this->statement->fecth(PDO::FETCH_ASSOC);
+            return $this->statement->fetch(PDO::FETCH_ASSOC);
+        }
+        public function row(){
+            return $this->statement->rowCount();
         }
     }
 ?>

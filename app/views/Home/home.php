@@ -1,4 +1,9 @@
     <div class="header">
+        <div class="container-flasher">
+                <?php
+                    Flasher::flash();
+                ?>
+        </div>
         <div class="container-header">
             <div class="header-btn">
                 <div class="notification">

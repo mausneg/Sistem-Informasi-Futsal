@@ -1,34 +1,77 @@
 $(".flasher-button").click(function () { 
-    $(".container-flasher").hide();
+    $(".container-flasher").html("")
 });
-document.getElementsByClassName("notification")[0].addEventListener("mouseenter",function(){
+$(".cancel-delete").click(function () {   
+    $(".pop-delete").hide();    
+});
+$(".notification").mouseenter(function () { 
     openList(this,"Notification")
-})
-document.getElementsByClassName("profile")[0].addEventListener("mouseenter",function(){
+    $(".header-list-profile").hide();
+    $(".header-list-notif").removeAttr("hidden");
+    $(".header-list-notif").css("display", "flex");
+    $(".header-list-notif").css("zIndex", "1");
+});
+$(".profile").mouseenter(function () { 
     openList(this,"Profile")
-})
+    $(".header-list-notif").hide()
+    $(".header-list-profile").removeAttr("hidden");
+    $(".header-list-profile").css("display", "flex");
+    $(".header-list-profile").css("zIndex", "1");
+});
 function openList(className,title){
-    document.getElementsByClassName("notification")[0].style.border = "none"
-    document.getElementsByClassName("profile")[0].style.border = "none"
-    document.getElementsByClassName("container-header")[0].style.zIndex = "1"
+    $(".notification").css("border", "none");
+    $(".profile").css("border", "none");
+    $(".container-header").css("zIndex", "1");
     document.querySelectorAll('body >*:not(.header)').forEach(e => e.style.filter = "blur(5px)")
-    document.body.style.backdropFilter = "blur(5px)"
-    const list = document.getElementsByClassName("header-list")[0]
-    const listTitle = document.getElementsByClassName("list-title")[0]
-    listTitle.innerHTML = title
-    list.removeAttribute("hidden")
-    list.style.display = "flex"
-    list.style.zIndex = "1"
-    className.style.border = "solid #777E76"
+    $("body").css("backdropFilter", "blur(5px)");
+    $(".list-title").html(title);
+    className.style.border = "solid #777E76";
 }
-document.getElementsByClassName("container-header")[0].addEventListener("mouseleave",function(){
-    document.getElementsByClassName("header-list")[0].style.display = "none"
-    document.getElementsByClassName("profile")[0].style.border = "none"
-    document.getElementsByClassName("notification")[0].style.border = "none"
+$(".container-header").mouseleave(function () { 
+    $(".header-list-profile,.header-list-notification").css("style", "none");
+    $(".profile,.notification").css("border", "none");
     document.querySelectorAll('body >*:not(.header)').forEach(e => e.style.filter = "none")
-    document.body.style.backdropFilter = "none"
-    document.getElementsByClassName("header-list")[0].setAttribute("hidden","hidden")
+    $("body").css("backdropFilter", "none");
+    $(".header-list-profile,.header-list-notif").hide();
+});
+$(".edit").click(function () { 
+    $(this).hide();
+    $(".confirm-btn,.confirm-password,.confirm-password-text,.change-password,.delete-account").show();
+    $(".confirm-btn,.change-password,.delete-account").css("display","flex");
+    $("input").removeAttr("disabled");
+    $(".email").attr("readonly","readonly");
+    $(".password").val("");
+});
+$(".cancel").click(function () { 
+    location.reload()
+});
+$(".delete-account").click(function (e) { 
+    $(".pop-delete").show().css("display","flex");    
+});
+$(".old-password,.username,.contact").on("keyup", function (){
+    $(".confirm-password").attr("required", "required");
 })
+$(".change-password").click(function () { 
+    $(this).hide();
+    $(".old-password").val("");
+    $(".confirm-password").val("");
+    $(".old-password-text").html("Old Password");
+    $(".confirm-password-text").html("New Password");
+    $(".message").hide();    
+});
+$(".old-password,.confirm-password").on("keyup", function (){
+    if($(".message").is(":hidden")){
+        $(".save").removeAttr("disabled");
+        return
+    }
+    if ($(".old-password").val() == $(".confirm-password").val()) {
+        $(".message").html("Matching").css("color", "green")
+        $(".save").removeAttr("disabled");
+    } else{
+        $(".message").html("Not Matching").css("color", "red")
+        $(".save").attr("disabled", "disabled");
+    }
+});
 Array.from(document.getElementsByClassName("navbar-list")[0].children).forEach(e =>{
     e.addEventListener("mouseenter",function(){
         const home = document.getElementById("home")
@@ -57,6 +100,16 @@ Array.from(document.getElementsByClassName("navbar-list")[0].children).forEach(e
         })
     })
 })
+$(".logout-btn").click(function () { 
+    $.ajax({
+        type: "POST",
+        url: "home/logout",
+        data: "data",
+        success: function () {
+            location.reload()
+        }
+    });
+});
 document.getElementsByClassName("info-sintetis")[0].addEventListener("mouseenter",function(){
     const text = "This type of field is a futsal field whose surface uses synthetic grass, this artificial grass can be installed according to the size of the futsal field.This type of field is enjoyed by many futsal players because when they fall it doesn't hurt too much and doesn't cause injuries."
     enterInfo(text,-60,90,this)

@@ -20,9 +20,9 @@
 		</div>
 		<form method="post" action="/login/login">
 			<h2 class="sign-in">Sign in</h2>
-			<input type="text" placeholder="Enter email or username" class="input username" name="username"required>
+			<input type="text" placeholder="Enter email or username" class="input username" name="username"required autocomplete="off">
 			<div class="input btn-password">
-				<input type="password" placeholder="password" class="password" name="password" required>
+				<input type="password" placeholder="password" class="password" name="password" required autocomplete="off">
 				<button type="button" class="show-hide"><i id="eye-icon" class="fa-solid fa-eye-slash"></i></button>
 			</div>
 			<a href="" class="forgot-password">Forgot password ?</a>

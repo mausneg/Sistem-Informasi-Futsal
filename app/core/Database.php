@@ -32,8 +32,8 @@
             $this->statement->bindValue($arg,$value,$type);
         }
         public function execute(){
+            $this->statement->execute();
             try {
-                $this->statement->execute();
             } catch (\Throwable $th) {}
         }
         public function results(){

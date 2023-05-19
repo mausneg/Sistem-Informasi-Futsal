@@ -65,10 +65,11 @@ body{
     height: 80%;
     padding-top: 30px;
     box-sizing: border-box;
-    /* background-image: url("../image/Login.jpg");
-    background-size: 40%;
-    background-position-x: calc(100vh*1/2);
-    background-repeat: no-repeat; */
+    background-image: url("../image/Register.png");
+    background-size: 80%;
+    background-position-x: calc(100vh*-1/50);
+    background-position-y: calc(100vh*-1/6);
+    background-repeat: no-repeat;
 }
 .register-login{
     width: 50%;

@@ -1,135 +1,7 @@
-    <div class="header">
-        <div class="container-popup">
-            <div class="container-flasher">
-                    <?php
-                        Flasher::flash();
-                    ?>
-            </div>
-            <div class="pop-delete" hidden>
-                <div class="popup-header">
-                    <i class="fa-solid fa-trash"></i>
-                    <h4>Delete Account?</h4>
-                </div>
-                <div class="confirm-delete">
-                    <button class="cancel-delete">Cancel</button>
-                    <form class="delete" action="/home/delete" method="post">
-                        <input type="submit" value="Delete Account">
-                </div>
-                </form>
-            </div>
-        </div>
-        <div class="container-header">
-            <div class="header-btn">
-                <div class="notification">
-                    <i class="fa-solid fa-bell"></i>
-                    <h2 class="notif-text">Notification</h2>
-                </div>
-                <div class="profile">
-                    <i class="fa-solid fa-user"></i>
-                    <h2 class="profile-text">Profile</h2>
-                </div>   
-            </div>
-            <div class="header-list-notif" hidden>
-                <div class="header-list-header">
-                    <h4 class="list-title"></h4>
-                </div>
-                <div class="header-list-content">
-                    <?php
-                        echo "notif";
-                    ?>
-                </div>
-                <div class="header-list-footer">
-                    <h4</h4>
-                </div>
-            </div>
-            <div class="header-list-profile" hidden>
-                <div class="header-list-header">
-                    <h4 class="list-title"></h4>
-                </div>
-                <div class="header-list-content">
-                    <img src="/image/default pp.jpg" alt="">
-                    <form method="post" action="/home/edit">
-                        <h4>Email</h4>
-                        <input type="email" value="<?php
-                            echo $_SESSION["account"]["email"];
-                        ?>" required name="email" class="email" disabled>
-                        <h4>Username</h4>
-                        <input type="text" value="<?php
-                            echo $_SESSION["account"]["username"];
-                        ?>" required name="username" disabled autocomplete="off">
-                        <h4>Contact</h4>
-                        <input type="text" value="<?php
-                            echo $_SESSION["account"]["contact"];
-                        ?>" required name="contact" disabled>
-                        <h4 class="old-password-text">Password</h4>
-                        <input type="password" value="<?php
-                            echo $_SESSION["account"]["password"];
-                        ?>" required name="old-password" class="old-password" disabled>
-                        <div class="change-password" hidden>Change Password</div>
-                        <h4 class="confirm-password-text" hidden>Confirm Password</h4>
-                        <input type="password" name="confirm-password" class="confirm-password" hidden>
-            			<div class="message"></div>
-                        <div class="confirm-btn" hidden>
-                            <input type="submit" value="cancel" class="cancel" name="cancel">
-                            <input type="submit" value="Save" class="save" name="save">
-                        </div>
-                    </form>
-                    <button class="delete-account" hidden>delete account</button>
-                </div>
-                <div class="header-list-footer">
-                    <h4 class="edit">Edit Profile</h4>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="container-body">
-        <div class="navbar">
-            <img src="/image/Logo Sifoot 2.png" alt="" class="logo">
-            <ul class="navbar-list">
-                <li class="list list-select" id="home">
-                    <button class="list-btn">
-                        <i class="list-icon fa-solid fa-house text-list-select"></i>
-                        <h4 class="list-text text-list-select">Home</h4>
-                    </button>
-                </li>
-                <li class="list" id="my-booking">
-                    <button class="list-btn">
-                        <i class="list-icon fa-solid fa-list-check"></i>
-                        <h4 class="list-text">My Booking</h4>
-                    </button>
-                </li>
-                <li class="list" id="payment">
-                    <button class="list-btn">
-                        <i class="list-icon fa-solid fa-money-bill-wave"></i>
-                        <h4 class="list-text">Payment</h4>
-                    </button>
-                </li>
-                <li class="list" id="about-us">
-                    <button class="list-btn">
-                        <i class="list-icon fa-solid fa-users"></i>
-                        <h4 class="list-text">About Us</h4>
-                    </button>
-                </li>
-                <li class="list" id="feedback">
-                    <button class="list-btn">
-                        <i class="list-icon fa-regular fa-comments"></i>
-                        <h4 class="list-text">Feedback</h4>
-                    </button>
-                </li>
-                <li class="list" id="guide">
-                    <button class="list-btn">
-                        <i class="list-icon fa-solid fa-book"></i>
-                        <h4 class="list-text">Guide</h4>
-                    </button>
-                </li>
-                <li class="list" id="log-out">
-                    <button class="list-btn logout-btn">
-                        <i class="list-icon fa-solid fa-right-from-bracket"></i>
-                        <h4 class="list-text">Log Out</h4>
-                    </button>
-                </li>
-            </ul>
-        </div>
+        <?php
+            require_once "../app/views/tamplates/navbar.php";
+        ?>
         <div class="content">
             <div class="content-btn">
                 <div class="content-btn-schedule">
@@ -217,6 +89,7 @@
                             <span class="done">Done</span>
                             <span><i class="fa-solid fa-check"></i></span>
                         </div>
+                        <div class="message-done"></div>
                     </div> 
                 </div>
             </div>

@@ -9,6 +9,7 @@
             $data["style"] = "home";
             $data["script"] = "home";
             $this->view("tamplates/header",$data);
+            $this->view("tamplates/header-content");
             $this->view("Home/home");
             $this->view("tamplates/footer",$data);
         }
@@ -52,8 +53,32 @@
             if ($this->model("CustomerModel")->delete($_POST) > 0) {
                 session_destroy();
                 Flasher::setFlash("Penghapusan Akun ","Berhasil","success");
-                header("Location: /Login");
+                header("Location: /login");
                 exit; 
+            }
+        }
+        public function booking(){
+            $time = $_POST["bookingData"]["time"] . ":00:00";
+            if((int)$_POST["bookingData"]["time"] < 10) $time = "0" . $time;
+            $date = $_POST["bookingData"]["year"] . "-" . $_POST["bookingData"]["month"] . "-" . $_POST["bookingData"]["day"];
+            $dateTime = $date . " " . $time;
+            $datetime = new DateTime($dateTime);
+            $dateTime = $datetime->format('Y-m-d H:i:s');
+            $booking = [
+                "field" => $_POST["bookingData"]["field"],
+                "dateTime" => $dateTime          
+            ];
+            if ($this->model("CustomerModel")->booking($booking) > 0) {
+                $_SESSION["booking"] = [
+                    "field" => $booking["field"],
+                    "dateTime" => $booking["dateTime"]
+                ];
+                Flasher::setFlash("Booking ","Berhasil","success");
+                exit;
+            }
+            else{
+                Flasher::setFlash("Booking ","Gagal","fail");
+                exit;
             }
         }
         public function logOut(){

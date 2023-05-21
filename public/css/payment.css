@@ -1,0 +1,91 @@
+*,html{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+:root{
+    --text-first: #ffffff;
+    --text-second: #34A0A4;
+    --text-third: #B0B0B0;
+    --text-fourth: #00a5cf;
+    --bg-first: #34A0A4;
+    --bg-second: #34a0a42f;
+    --bg-third: #777E7675;
+    --bg-fourth:#ffffff;
+    --bg-fifth: #f9f9f9;
+    --bg-sixth: #f9f9f9dd;
+    --bg-seventh: #00a5cf;
+    --bg-eighth: #FFFF00;
+    --bg-ninth: #C93939;
+
+}
+body{
+    width: 100%;
+    height: 100vh;
+}
+.flasher-fail{
+    color: rgb(205, 34, 69);
+    background-color: rgba(205, 34, 68, 0.361);
+    border: 2px rgb(205, 34, 69) solid;
+}
+.flasher-success{
+    color:  #2a9d8f;
+    background-color: #2a9d9071;
+    border: 2px #2a9d8f solid;
+}
+.container-body{
+    height: 87%;
+    display: flex;
+}
+.content{
+    margin-left: 50px;
+}
+.content-header{
+    margin-bottom: 20px;
+}
+.content-header>h4{
+    font-size: 24px;
+}
+.container-payment-method{
+    height: 600px;
+    width: 294px;
+    border-radius: 10px;
+    background-color: var(--bg-fifth);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.payment-method-header{
+    height: 70px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.payment-method-header>div{
+    font-size: 16px;
+    font-weight: bold;
+    height: 32px;
+    border-bottom: 1px var(--text-third) solid;
+}
+.payment-method-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    height: 103px;
+    width: 180px;
+    border-radius: 10px;    
+    border: 2px solid #AFAFAF;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+}
+.card>img{
+    margin-bottom: 5px;
+    border-radius: 8px;
+}
+.card>div{
+    color: var(--text-third);
+    font-size: 14px;
+}

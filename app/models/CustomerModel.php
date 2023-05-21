@@ -1,13 +1,12 @@
 <?php
     class CustomerModel{
-        private $table = "customer";
         private $db; 
 
         public function __construct(){
             $this->db = new Database();
         }
         public function register($data){
-            $query = "insert into " . $this->table . " values(:email,:username,:contact,:password,:pp)";
+            $query = "insert into customer values(:email,:username,:contact,:password,:pp)";
             $this->db->query($query);
             $this->db->bind("email",$data["email"]);
             $this->db->bind("username",$data["username"]);
@@ -18,7 +17,7 @@
             return $this->db->row();
         }
         public function edit($data){
-            $query = "update " . $this->table . " set username_customer = :username, contact_customer = :contact, password_customer = :password where email_customer = :email";
+            $query = "update customer set username_customer = :username, contact_customer = :contact, password_customer = :password where email_customer = :email";
             $this->db->query($query);
             $this->db->bind("email",$data["email"]);
             $this->db->bind("username",$data["username"]);
@@ -28,11 +27,22 @@
             return $this->db->row();
         }
         public function delete(){
-            $query = "delete from " . $this->table . " where email_customer = :email";
+            $query = "delete from customer where email_customer = :email";
             $this->db->query($query);
             $this->db->bind("email", $_SESSION["account"]["email"]);
             $this->db->execute();
             return $this->db->row();
         } 
+        public function booking($data){
+            $query = "insert into booking values('',:field,:date,:status,:email)";
+            $this->db->query($query);
+            $this->db->bind("field",$data["field"]);
+            $this->db->bind("date",$data["dateTime"]);
+            $this->db->bind("status","booked");
+            $this->db->bind("email",$_SESSION["account"]["email"]);
+            $this->db->execute();
+            return $this->db->row();
+
+        }
     }
 ?>`

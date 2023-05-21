@@ -1,115 +1,6 @@
-$(".flasher-button").click(function () { 
-    $(".container-flasher").html("")
-});
-$(".cancel-delete").click(function () {   
-    $(".pop-delete").hide();    
-});
-$(".notification").mouseenter(function () { 
-    openList(this,"Notification")
-    $(".header-list-profile").hide();
-    $(".header-list-notif").removeAttr("hidden");
-    $(".header-list-notif").css("display", "flex");
-    $(".header-list-notif").css("zIndex", "1");
-});
-$(".profile").mouseenter(function () { 
-    openList(this,"Profile")
-    $(".header-list-notif").hide()
-    $(".header-list-profile").removeAttr("hidden");
-    $(".header-list-profile").css("display", "flex");
-    $(".header-list-profile").css("zIndex", "1");
-});
-function openList(className,title){
-    $(".notification").css("border", "none");
-    $(".profile").css("border", "none");
-    $(".container-header").css("zIndex", "1");
-    document.querySelectorAll('body >*:not(.header)').forEach(e => e.style.filter = "blur(5px)")
-    $("body").css("backdropFilter", "blur(5px)");
-    $(".list-title").html(title);
-    className.style.border = "solid #777E76";
-}
-$(".container-header").mouseleave(function () { 
-    $(".header-list-profile,.header-list-notification").css("style", "none");
-    $(".profile,.notification").css("border", "none");
-    document.querySelectorAll('body >*:not(.header)').forEach(e => e.style.filter = "none")
-    $("body").css("backdropFilter", "none");
-    $(".header-list-profile,.header-list-notif").hide();
-});
-$(".edit").click(function () { 
-    $(this).hide();
-    $(".confirm-btn,.confirm-password,.confirm-password-text,.change-password,.delete-account").show();
-    $(".confirm-btn,.change-password,.delete-account").css("display","flex");
-    $("input").removeAttr("disabled");
-    $(".email").attr("readonly","readonly");
-    $(".password").val("");
-});
-$(".cancel").click(function () { 
-    location.reload()
-});
-$(".delete-account").click(function (e) { 
-    $(".pop-delete").show().css("display","flex");    
-});
-$(".old-password,.username,.contact").on("keyup", function (){
-    $(".confirm-password").attr("required", "required");
-})
-$(".change-password").click(function () { 
-    $(this).hide();
-    $(".old-password").val("");
-    $(".confirm-password").val("");
-    $(".old-password-text").html("Old Password");
-    $(".confirm-password-text").html("New Password");
-    $(".message").hide();    
-});
-$(".old-password,.confirm-password").on("keyup", function (){
-    if($(".message").is(":hidden")){
-        $(".save").removeAttr("disabled");
-        return
-    }
-    if ($(".old-password").val() == $(".confirm-password").val()) {
-        $(".message").html("Matching").css("color", "green")
-        $(".save").removeAttr("disabled");
-    } else{
-        $(".message").html("Not Matching").css("color", "red")
-        $(".save").attr("disabled", "disabled");
-    }
-});
-Array.from(document.getElementsByClassName("navbar-list")[0].children).forEach(e =>{
-    e.addEventListener("mouseenter",function(){
-        const home = document.getElementById("home")
-        home.classList.remove("list-select")
-        e.classList.add("list-select")
-        Array.from(home.firstElementChild.children).forEach(f => {
-        f.classList.remove("text-list-select")
-        f.classList.add("text-list-unselect")
-        })
-        Array.from(e.firstElementChild.children).forEach(f => {
-            f.classList.add("text-list-select")
-            f.classList.remove("text-list-unselect")
-        })
-    })
-    e.addEventListener("mouseleave",function(){
-        const home = document.getElementById("home")
-        home.classList.add("list-select")
-        e.classList.remove("list-select")
-        Array.from(home.firstElementChild.children).forEach(f => {
-        f.classList.add("text-list-select")
-        f.classList.remove("text-list-unselect")
-        })
-        Array.from(e.firstElementChild.children).forEach(f => {
-            f.classList.remove("text-list-select")
-            f.classList.add("text-list-unselect")
-        })
-    })
-})
-$(".logout-btn").click(function () { 
-    $.ajax({
-        type: "POST",
-        url: "home/logout",
-        data: "data",
-        success: function () {
-            location.reload()
-        }
-    });
-});
+$("#home").css("backgroundColor", "white");
+$(".fa-house,.list-text-home").addClass("text-list-select");
+
 document.getElementsByClassName("info-sintetis")[0].addEventListener("mouseenter",function(){
     const text = "This type of field is a futsal field whose surface uses synthetic grass, this artificial grass can be installed according to the size of the futsal field.This type of field is enjoyed by many futsal players because when they fall it doesn't hurt too much and doesn't cause injuries."
     enterInfo(text,-60,90,this)
@@ -256,6 +147,7 @@ function mainCalendar() {
         }
         $(".calendar-days").children().click(function () { 
             let tempDay = parseInt(this.innerHTML)
+            let currDayNo = currDate.getDate()
             let tempMonth =  $(".month-picker").html();
             let tempYear = parseInt($("#year").html());
             month_names.forEach(function(e,i) {
@@ -346,18 +238,17 @@ function generateTimeList(){
         timeList.appendChild(list)
     }
 }
-var timeSelect = []
+var timeSelect = null
 generateTimeList()
 $(".time-list").children().click(function() { 
+    $(".time-list").children().removeClass("selected");
     const time = parseInt(this.innerHTML)
-    timeSelect.push(time)
-    timeSelect = [...new Set(timeSelect)];
-    timeSelect.sort(function(a, b){return a - b})
+    timeSelect = time
     $(this).addClass("selected");
 });
 $(".book-reset").click(function () { 
     fieldSelect = null
-    timeSelect = []
+    timeSelect = null
     daySelect = null
     monthSelect = null
     yearSelect = null
@@ -368,5 +259,28 @@ $(".book-reset").click(function () {
     $(".calendar-days").children().removeClass("selected");
 });
 $(".book-done").click(function() { 
-    console.log(fieldSelect,timeSelect,daySelect,monthSelect,yearSelect)
+    const data = {
+        field: fieldSelect,
+        time: timeSelect,
+        day: daySelect,
+        month: monthSelect,
+        year: yearSelect
+    }
+    for(let key in data){
+        if(data[key] == null){
+            $(".message-done").html("Pilih Data Booking!").css("color","red");
+            return
+        }
+    }
+    $.ajax({
+        type: "POST",
+        url: "home/booking",
+        data: {bookingData: data} ,
+        success: function (response) {
+            window.location.assign("/payment")
+        },
+        error: function(xhr, status, error) {
+            console.log('Error: ' + error);
+          }
+    });
 });

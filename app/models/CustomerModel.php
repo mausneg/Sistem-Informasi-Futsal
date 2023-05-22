@@ -42,7 +42,18 @@
             $this->db->bind("email",$_SESSION["account"]["email"]);
             $this->db->execute();
             return $this->db->row();
-
+        }
+        public function getBooking($status){
+            if ($status == "*"){ 
+                $query = "select * from booking order by date desc";
+                $this->db->query($query);
+            }
+            else{
+                $query = "select * from booking where booking_status = :status order by date desc";
+                $this->db->query($query);
+                $this->db->bind("status",$status);
+            } 
+            return $this->db->results();
         }
     }
 ?>`

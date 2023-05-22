@@ -9,19 +9,24 @@
                         <h4>All</h4>
                     </button>
                 </div>
-                <div class="content-btn-ongoing">
-                    <button class="btn-ongoing btn-unselect">
-                        <h4>On Going</h4>
+                <div class="content-btn-booked">
+                    <button class="btn-booked btn-unselect">
+                        <h4>Booked</h4>
                     </button>
                 </div>
-                <div class="content-btn-end">
-                    <button class="btn-end btn-unselect">
-                        <h4>End</h4>
+                <div class="content-btn-pending">
+                    <button class="btn-pending btn-unselect">
+                        <h4>Pending</h4>
                     </button>
                 </div>
-                <div class="content-btn-cancel">
-                    <button class="btn-cancel btn-unselect">
-                        <h4>Cancel</h4>
+                <div class="content-btn-confirm">
+                    <button class="btn-confirm btn-unselect">
+                        <h4>Confirm</h4>
+                    </button>
+                </div>
+                <div class="content-btn-cancelled">
+                    <button class="btn-cancelled btn-unselect">
+                        <h4>Cancelled</h4>
                     </button>
                 </div>
             </div>
@@ -36,17 +41,8 @@
                         <i class="fa-regular fa-calendar"></i>
                     </div>
                 </div>
-                <div class="content-main-all">
-                    
-                </div>
-                <div class="content-main-ongoing" hidden>
-                    ongoing
-                </div>
-                <div class="content-main-end" hidden>
-                    end
-                </div>
-                <div class="content-main-cancel" hidden>
-                    cancel
+                <div class="content-main-body">
+                 
                 </div>
             </div>
         </div>

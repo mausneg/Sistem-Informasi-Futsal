@@ -45,12 +45,14 @@
         }
         public function getBooking($status){
             if ($status == "*"){ 
-                $query = "select * from booking order by date desc";
+                $query = "select * from booking where email_customer = :email order by no_booking desc";
                 $this->db->query($query);
+                $this->db->bind("email",$_SESSION["account"]["email"]);
             }
             else{
-                $query = "select * from booking where booking_status = :status order by date desc";
+                $query = "select * from booking where booking_status = :status and email_customer = :email order by no_booking desc";
                 $this->db->query($query);
+                $this->db->bind("email",$_SESSION["account"]["email"]);
                 $this->db->bind("status",$status);
             } 
             return $this->db->results();

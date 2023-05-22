@@ -1,6 +1,9 @@
 <?php
     class MyBooking extends Controller{
         public function index(){
+            if (!isset($_SESSION["account"])) {
+                header("Location: login");
+            }
             $data["title"] = "My Booking";
             $data["style"] = "mybooking";
             $data["script"] = "mybooking";

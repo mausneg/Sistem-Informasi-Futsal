@@ -30,12 +30,44 @@
                         </div>
                     </div>
                 </div>
-                <div class="payment-method-detail">
-                    <div class="payment-detail">
+                <div class="payment-method-detail-container">
+                    <div class="payment-method-detail">
+                        <div class="invoice">
+                            <h4>INVOICE</h4>
+                            <ul>
+                                <li>
+                                    <h4>No Booking</h4> 
+                                    <span>12</span>
+                                </li>
+                                <li>
+                                    <h4>Field</h4> 
+                                    <span>Sintetis</span>
+                                </li>
+                                <li>
+                                    <h4>Date</h4> 
+                                    <span>12/07/2023</span>
+                                </li>
+                                <li>
+                                    <h4>Time</h4> 
+                                    <span>17:00:00</span>
+                                </li>
+                                <li>
+                                    <h4>Total Amount</h4> 
+                                    <span>150.000</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dana-detail">
+                            <input type="tel" placeholder="Input Your Dana Number" pattern="[0-9]+" maxlength="12" required>
+                            <input type="button" value="OK">
+                        </div>
+                        <div class="promo">
+                            <h4>DO YOU HAVE PROMO CODE?</h4>
+                            <input type="text">
+                            <input type="button" value="APPLY">
+                        </div>
                     </div>
-                    <div class="checkout-btn">
-
-                    </div>
+                    <button class="checkout-btn">CHECKOUT</button>
                 </div>
             </div>
         </div>

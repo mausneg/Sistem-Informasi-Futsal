@@ -5,10 +5,10 @@
                 header("Location: /login");
                 exit();
             }
-            if (!isset($_SESSION["booking"])) {
-                header("Location: /home");
-                exit();
-            }
+            // if (!isset($_SESSION["booking"])) {
+            //     header("Location: /home");
+            //     exit();
+            // }
             $data["title"] = "Payment";
             $data["style"] = "payment";
             $data["script"] = "payment";

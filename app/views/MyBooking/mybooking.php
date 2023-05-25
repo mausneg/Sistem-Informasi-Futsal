@@ -29,6 +29,11 @@
                         <h4>Cancelled</h4>
                     </button>
                 </div>
+                <div class="content-btn-end">
+                    <button class="btn-end btn-unselect">
+                        <h4>End</h4>
+                    </button>
+                </div>
             </div>
             <div class="content-main">
                 <div class="content-main-header">

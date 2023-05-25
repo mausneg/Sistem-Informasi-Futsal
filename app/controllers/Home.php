@@ -68,10 +68,18 @@
                 "field" => $_POST["bookingData"]["field"],
                 "dateTime" => $dateTime          
             ];
-            if ($this->model("CustomerModel")->booking($booking) > 0) {
+            $data = $this->model("CustomerModel")->booking($booking);
+            $amount = 0;
+            if($data["field_name"] == "vinyl") $amount = 150000;
+            else $amount = 120000;
+            if (isset($data)) {
                 $_SESSION["booking"] = [
-                    "field" => $booking["field"],
-                    "dateTime" => $booking["dateTime"]
+                    "no" => $data["no_booking"],
+                    "field" => $data["field_name"],
+                    "date" => $data["date"],
+                    "status" => $data["booking_status"],
+                    "email" => $data["email_customer"],
+                    "amount" => $amount
                 ];
                 Flasher::setFlash("Booking ","Berhasil","success");
                 exit;

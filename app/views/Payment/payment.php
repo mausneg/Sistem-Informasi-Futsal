@@ -12,19 +12,19 @@
                         <div>Choose your payment method</div>
                     </div>
                     <div class="payment-method-body">
-                        <div class="card">
+                        <div class="card selected-card dana">
                             <img src="/image/dana.jpg" alt="">
                             <div>PAY WITH DANA</div>
                         </div>
-                        <div class="card">
+                        <div class="card gopay">
                             <img src="/image/gopay.jpg" alt="">
                             <div>PAY WITH GOPAY</div>
                         </div>
-                        <div class="card">
+                        <div class="card shopee">
                             <img src="/image/shopee.jpg" alt="">
                             <div>PAY WITH SHOPEE</div>
                         </div>
-                        <div class="card">
+                        <div class="card qris">
                             <img src="/image/qris.jpg" alt="">
                             <div>PAY WITH QRIS</div>
                         </div>
@@ -37,29 +37,49 @@
                             <ul>
                                 <li>
                                     <h4>No Booking</h4> 
-                                    <span>12</span>
+                                    <span class="no-booking">
+                                        <?php
+                                            echo $_SESSION["booking"]["no"];
+                                        ?>
+                                    </span>
                                 </li>
                                 <li>
                                     <h4>Field</h4> 
-                                    <span>Sintetis</span>
+                                    <span>
+                                        <?php
+                                            echo $_SESSION["booking"]["field"]
+                                        ?>
+                                    </span>
                                 </li>
                                 <li>
                                     <h4>Date</h4> 
-                                    <span>12/07/2023</span>
+                                    <span>
+                                        <?php
+                                            echo substr($_SESSION["booking"]["date"],0,10)
+                                        ?>
+                                    </span>
                                 </li>
                                 <li>
                                     <h4>Time</h4> 
-                                    <span>17:00:00</span>
+                                    <span>
+                                        <?php
+                                            echo substr($_SESSION["booking"]["date"],11,8)
+                                        ?>
+                                    </span>
                                 </li>
                                 <li>
                                     <h4>Total Amount</h4> 
-                                    <span>150.000</span>
+                                    <span class="amount">
+                                        <?php
+                                            echo $_SESSION["booking"]["amount"]
+                                        ?>
+                                    </span>
                                 </li>
                             </ul>
                         </div>
-                        <div class="dana-detail">
-                            <input type="tel" placeholder="Input Your Dana Number" pattern="[0-9]+" maxlength="12" required>
-                            <input type="button" value="OK">
+                        <div class="choose-detail">
+                            <input class="choose-input" type="tel" placeholder="Input Your Dana Number" pattern="[0-9]+" maxlength="12" required>
+                            <input class="choose-btn" type="button" value="OK">
                         </div>
                         <div class="promo">
                             <h4>DO YOU HAVE PROMO CODE?</h4>

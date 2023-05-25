@@ -21,6 +21,30 @@
                 }
                 echo "\n";
             }
+            exit;
+        }
+        public function checkout(){
+            $data = $this->model("CustomerModel")->getBookingCheckout($_POST["noBooking"]);
+            $amount = 0;
+            if($data["field_name"] == "vinyl") $amount = 150000;
+            else $amount = 120000;
+            $_SESSION["booking"] = [
+                "no" => $data["no_booking"],
+                "field" => $data["field_name"],
+                "date" => $data["date"],
+                "status" => $data["booking_status"],
+                "email" => $data["email_customer"],
+                "amount" => $amount
+            ];
+            exit;
+        }
+        public function cancel(){
+            if ($this->model("CustomerModel")->deleteBooking($_POST["noBooking"]) > 0) {
+                Flasher::setFlash("Pembatalan Booking ","Berhasil","success");
+                unset($_SESSION["booking"]);
+            }
+            exit;
+
         }
     }
 ?>

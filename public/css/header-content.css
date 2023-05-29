@@ -3,6 +3,24 @@
     justify-content: center;
     height: 8%;
 }
+:root{
+    --text-first: #ffffff;
+    --text-second: #34A0A4;
+    --text-third: #B0B0B0;
+    --text-fourth: #00a5cf;
+    --text-fifth: #5093D0;
+    --bg-first: #34A0A4;
+    --bg-second: #34a0a42f;
+    --bg-third: #777E7675;
+    --bg-fourth:#ffffff;
+    --bg-fifth: #f9f9f9;
+    --bg-sixth: #f9f9f9dd;
+    --bg-seventh: #00a5cf;
+    --bg-eighth: #FFFF00;
+    --bg-ninth: #C93939;
+    --bg-tenth: #5093D0;
+    --bg-eleventh: #5092d03f;
+}
 .container-popup{
     margin-top: 5px;
     z-index: 1;
@@ -30,6 +48,11 @@
     color: var(--text-first);
     background-color: #2a9d9071;
     border: 2px #2a9d8f solid;
+}
+.flasher-info{
+    color: var(--text-first);
+    background-color: #3da8f4a4;
+    border: 2px #3da8f4 solid;
 }
 .flasher-button{
     background-color: transparent;

@@ -75,17 +75,17 @@
             return $this->db->row();
         }
         public function checkout($data){
-            $query = "insert into payment values('',:noBooking,:idPaymentMethod,:paymentMethod,:amount,NOW()";
+            $query = "insert into payment values('',:noBooking,:idPaymentMethod,:paymentMethod,:amount,NOW())";
             $this->db->query($query);
-            $this->db->bind("noBooking",$data["noBooking"]);
-            $this->db->bind("idPaymentMethod",$data["idPaymentMethod"]);
+            $this->db->bind("noBooking",$data["checkout"]["noBooking"]);
+            $this->db->bind("idPaymentMethod",$data["checkout"]["idPaymentMethod"]);
             $this->db->bind("paymentMethod",$_SESSION["paymentMethod"]);
-            $this->db->bind("amount",$data["amount"]);
+            $this->db->bind("amount",$data["checkout"]["amount"]);
             $this->db->execute();
 
             $query = "update booking set booking_status = 'pending' where no_booking = :noBooking";
             $this->db->query($query);
-            $this->db->bind("noBooking",$data["noBooking"]);
+            $this->db->bind("noBooking",$data["checkout"]["noBooking"]);
             $this->db->execute();
             return $this->db->row();
         }

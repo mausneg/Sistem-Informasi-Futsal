@@ -1,38 +1,8 @@
     <div class="container-body">
-        <?php
-            require_once "../app/views/tamplates/navbar.php";
-        ?>
-        <div class="content">
-            <div class="content-header">
-                <h4>Payment</h4>
-            </div>
-            <div class="content-body">
-                <div class="container-payment-method">
-                    <div class="payment-method-header">
-                        <div>Choose your payment method</div>
-                    </div>
-                    <div class="payment-method-body">
-                        <div class="card selected-card dana">
-                            <img src="/image/dana.jpg" alt="">
-                            <div>PAY WITH DANA</div>
-                        </div>
-                        <div class="card gopay">
-                            <img src="/image/gopay.jpg" alt="">
-                            <div>PAY WITH GOPAY</div>
-                        </div>
-                        <div class="card shopee">
-                            <img src="/image/shopee.jpg" alt="">
-                            <div>PAY WITH SHOPEE</div>
-                        </div>
-                        <div class="card qris">
-                            <img src="/image/qris.jpg" alt="">
-                            <div>PAY WITH QRIS</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="payment-method-detail-container">
-                    <div class="payment-method-detail">
-                        <div class="invoice">
+
+        <div class="content-summary">
+            <div class="card-summary">
+                <div class="invoice-summary">
                             <h4>INVOICE</h4>
                             <ul>
                                 <li>
@@ -76,19 +46,14 @@
                                     </span>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="choose-detail">
-                            <input class="choose-input" type="tel" placeholder="Input Your Dana Number" pattern="[0-9]+" maxlength="12" required>
-                            <div class="message"></div>
-                        </div>
-                        <div class="promo">
-                            <h4>DO YOU HAVE PROMO CODE?</h4>
-                            <input type="text">
-                            <input type="button" value="APPLY">
-                        </div>
-                    </div>
-                    <button class="checkout-btn">CHECKOUT</button>
                 </div>
+                <div class="payment-transfer">
+                    <h4><?php echo $_SESSION["paymentMethod"];?> method</h4>
+                    <div>
+                        <h4>Transfer to <?php echo $_SESSION["paymentNumber"];?></h4>
+                    </div>
+                </div>  
+                <button class="summary-btn">home</button>
             </div>
         </div>
     </div>

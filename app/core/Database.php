@@ -32,9 +32,11 @@
             $this->statement->bindValue($arg,$value,$type);
         }
         public function execute(){
-            $this->statement->execute();
             try {
-            } catch (\Throwable $th) {}
+                $this->statement->execute();
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage() . " in " . $e->getFile() . " on line " . $e->getLine();
+            }
         }
         public function results(){
             $this->execute();

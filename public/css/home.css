@@ -104,9 +104,9 @@ body{
     cursor: pointer;
 }
 .schedule-list{
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 90%;
     height: 100%;
 }
 .schedule-list>div{
@@ -114,7 +114,7 @@ body{
     flex-direction: column;
     font-size: 18px;
     font-weight: bold;
-    width: 170px;
+    width: 200px;
 }
 .schedule-list-header{
     margin-bottom: 5px;
@@ -124,6 +124,10 @@ body{
     border-top: 2px var(--text-third) solid;
     border-bottom: 2px var(--text-third) solid;
     height: 100%;
+}
+.schedule-list-body>div{
+    display: flex;
+    flex-direction: column;
 }
 .content-book{
     display: none;

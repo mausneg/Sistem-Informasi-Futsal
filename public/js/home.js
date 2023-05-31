@@ -58,83 +58,131 @@ function choose(show1,hide1,show2,hide2,show3,hide3){
     chooseShow.removeAttribute("hidden")
     chooseHide.setAttribute("hidden","hidden")
 }
-const currDate = new Date()
-var currDay = currDate.getDay()
-var currDayNo = currDate.getDate()
-function mainSchedule(){
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    const currMonth = monthNames[currDate.getMonth()]
-    const currYear = currDate.getFullYear()
-    $(".schedule-month").html(currMonth)
-    $(".schedule-year").html(currYear)   
-    generateListSchedule(currDay,currDayNo)
+const date = new Date()
+var scheduleDate = date.getDate()
+var scheduleMonth = date.getMonth()
+var scheduleYear = date.getFullYear()
+const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+function isLeapYear(year){
+return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 ===0)
 }
-function generateListSchedule(argDay,argDate){
-    const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+function getFebDays(year){
+    return isLeapYear(year) ? 29 : 28
+}
+function scheduleData(response,currDate,currMonth,currYear,i){
+    const currDay = new Date(currYear, currMonth, currDate).getDay();
+    const words = response.split(" ")
+    console.log(words)
+    const headList = $("<div class = 'schedule-list-header'>" + dayNames[(currDay+i)%7] + "</div>")
+    const bodyList = $("<div class = 'schedule-list-body'>" + (currDate+i) + "</div>")
+    let j = 0
+    while(j < words.length-2) {
+        const list = $("<div></div>")
+        let k = j
+        $(list).append($("<div>" + words[k].replace(/`/g, '') +"</div>"))
+        $(list).append($("<div>" + words[++k] +"</div>"))
+        j = ++k
+        $(bodyList).append(list);
+    }
+    const container = $("<div></div>")
+    $(container).append(headList)
+    $(container).append(bodyList)
+    $(".schedule-list").append(container);
+}
+function getSchedule(date,month,year,i) {
+    const schedule = {
+        date : date+i,
+        month : month,
+        year : year,
+    }
+    console.log(schedule)
+    $.ajax({
+        type: "POST",
+        url: "home/getSchedule",
+        data: {schedule : schedule},
+        success: function(response) {
+            scheduleData(response,date,month,year,i)
+        },
+    })
+}
+function generateSchedule(currDate,currMonth,currYear){
+    const date = new Date()
+    let daysOfMonth = [31, getFebDays(currYear), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    $(".schedule-list").html("");
+    if(currDate < 1){
+        scheduleMonth--
+        console.log(scheduleMonth)
+        scheduleDate = daysOfMonth[scheduleMonth] - (daysOfMonth[scheduleMonth]%4) + 1
+        currDate = scheduleDate
+        currMonth = scheduleMonth
+    }
+    if(currDate > daysOfMonth[currMonth]){
+        scheduleDate = 1
+        scheduleMonth++
+        currDate = scheduleDate
+        currMonth = scheduleMonth
+    }
+    if(scheduleMonth > 11){
+        scheduleMonth = 0
+        currMonth = scheduleMonth
+        scheduleYear++
+        currYear = scheduleYear
+    }
+    $(".schedule-month").html(monthNames[currMonth])
+    $(".schedule-year").html(currYear)
     for (let i = 0; i < 4; i++) {
-        const currDay = dayNames[(argDay+i)%7]
-        const listSchedule = document.createElement("div")
-        const dayDiv = document.createElement("div")
-        const dateDiv = document.createElement("div")
-        const day = document.createTextNode(currDay)
-        const date = document.createTextNode(argDate+i)
-        dayDiv.appendChild(day)
-        dateDiv.appendChild(date)
-        dayDiv.classList.add("schedule-list-header")
-        dateDiv.classList.add("schedule-list-body")
-        listSchedule.appendChild(dayDiv)
-        listSchedule.appendChild(dateDiv)
-        $(".schedule-list").append(listSchedule);
+        if(currDate+i < date.getDate() && currMonth <= date.getMonth() && currYear <= date.getFullYear()) continue
+        if(currDate+i > daysOfMonth[currMonth]){
+            return
+        } 
+        getSchedule(currDate,currMonth,currYear,i)
     }
+
 }
-mainSchedule()
-$(".schedule-right").click(function() {
-    function isLeapYear(year){
-        return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 ===0)
-    }
-    function getFebDays(year){
-        return isLeapYear(year) ? 29 : 28
-    }
-    let dayOfMonth = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    const check = dayOfMonth[currDate.getMonth()]
-    console.log(check)
-    if(currDayNo+4 > check) return
-    $(".schedule-list").children().remove()
-    generateListSchedule(++currDay,++currDayNo)
+function schedule(){
+    const date = new Date()
+    const currDate = date.getDate()
+    const currMonth = date.getMonth()
+    const currYear = date.getFullYear()
+    generateSchedule(currDate,currMonth,currYear)
+}
+schedule()
+
+$(".schedule-right").click(function (e) { 
+    scheduleDate+=4
+    generateSchedule(scheduleDate,scheduleMonth,scheduleYear)
 });
-$(".schedule-left").click(function() {
-    const check = currDate.getDate()
-    if(currDayNo-1 < check) return
-    $(".schedule-list").children().remove()
-    generateListSchedule(--currDay,--currDayNo)
+$(".schedule-left").click(function (e) { 
+    const date = new Date()
+    const currDate = date.getDate()
+    const currMonth = date.getMonth()
+    const currYear = date.getFullYear()
+    if(scheduleDate-4 < currDate && scheduleMonth-1 < currMonth && scheduleYear <= currYear) return
+    scheduleDate-=4
+    generateSchedule(scheduleDate,scheduleMonth,scheduleYear)
+
 });
 var daySelect = null
 var monthSelect = null
 var yearSelect = null
 function mainCalendar() {
     let calendar = document.querySelector('.calendar')
-    const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    function isLeapYear(year){
-    return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 ===0)
-    }
-    function getFebDays(year){
-        return isLeapYear(year) ? 29 : 28
-    }
     generateCalendar = (month, year) => {   
         let calendar_days = calendar.querySelector('.calendar-days')
         let calendar_header_year = calendar.querySelector('#year')
-        let days_of_month = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        let daysOfMonth = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
         calendar_days.innerHTML = ''
         let currDate = new Date()
         if (month <= currDate.getMonth() && year <= currDate.getFullYear()){
             month = currDate.getMonth()   
             year = currDate.getFullYear()
         } 
-        let curr_month = `${month_names[month]}`
+        let curr_month = `${monthNames[month]}`
         month_picker.innerHTML = curr_month
         calendar_header_year.innerHTML = year
         let first_day = new Date(year, month, 1)
-        for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
+        for (let i = 0; i <= daysOfMonth[month] + first_day.getDay() - 1; i++) {
             let day = document.createElement('div')
             if (i >= first_day.getDay()) {
                 day.classList.add('calendar-day-hover')
@@ -150,7 +198,7 @@ function mainCalendar() {
             let currDayNo = currDate.getDate()
             let tempMonth =  $(".month-picker").html();
             let tempYear = parseInt($("#year").html());
-            month_names.forEach(function(e,i) {
+            monthNames.forEach(function(e,i) {
                 if(e == tempMonth){
                     tempMonth = i
                     return
@@ -165,7 +213,7 @@ function mainCalendar() {
         });
     }
     let month_list = calendar.querySelector('.month-list')
-    month_names.forEach((e, index) => {
+    monthNames.forEach((e, index) => {
         let month = document.createElement('div')
         month.innerHTML = `<div data-month="${index}">${e}</div>`
         month.querySelector('div').onclick = () => {

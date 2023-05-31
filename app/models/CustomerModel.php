@@ -89,5 +89,11 @@
             $this->db->execute();
             return $this->db->row();
         }
+        public function getSchedule($date){
+            $query = "SELECT (SELECT username_customer FROM customer WHERE email_customer = booking.email_customer) AS username,DATE_FORMAT(date, '%H:%i:%s') AS time FROM booking WHERE DATE(date) = :date and booking_status = 'confirm' order by date";
+            $this->db->query($query);
+            $this->db->bind("date",$date);
+            return $this->db->results();
+        }
     }
 ?>`

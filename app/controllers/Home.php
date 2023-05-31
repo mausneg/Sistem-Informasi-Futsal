@@ -60,7 +60,7 @@
         public function booking(){
             $time = $_POST["bookingData"]["time"] . ":00:00";
             if((int)$_POST["bookingData"]["time"] < 10) $time = "0" . $time;
-            $date = $_POST["bookingData"]["year"] . "-" . $_POST["bookingData"]["month"] . "-" . $_POST["bookingData"]["day"];
+            $date = $_POST["bookingData"]["year"] . "-" . $_POST["bookingData"]["month"]+1 . "-" . $_POST["bookingData"]["day"];
             $dateTime = $date . " " . $time;
             $datetime = new DateTime($dateTime);
             $dateTime = $datetime->format('Y-m-d H:i:s');
@@ -88,6 +88,19 @@
                 Flasher::setFlash("Booking ","Gagal","fail");
                 exit;
             }
+        }
+        public function getSchedule(){
+            $date = $_POST["schedule"]["year"] . "-" . $_POST["schedule"]["month"]+1 . "-" . $_POST["schedule"]["date"];
+            $date = new DateTime($date);
+            $date = $date->format("Y-m-d");
+            $data = $this->model("CustomerModel")->getSchedule($date);
+            foreach ($data as $row) {
+                foreach ($row as $key => $value) {
+                    echo $value . " ";
+                }
+                echo "\n";
+            }
+            exit;
         }
         public function logOut(){
             session_destroy();

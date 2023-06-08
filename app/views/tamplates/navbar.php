@@ -10,7 +10,7 @@
                 <li class="list" id="mybooking">
                     <button class="list-btn list-btn-mybooking">
                         <i class="list-icon fa-solid fa-list-check"></i>
-                        <h4 class="list-text list-text-mybooking">My Booking</h4>
+                        <h4 class="list-text list-text-mybooking    ">My Booking</h4>
                     </button>
                 </li>
                 <li class="list" id="payment">
@@ -22,7 +22,7 @@
                 <li class="list" id="aboutus">
                     <button class="list-btn list-btn-aboutus">
                         <i class="list-icon fa-solid fa-users"></i>
-                        <h4 class="list-text">About Us</h4>
+                        <h4 class="list-text list-text-aboutus">About Us</h4>
                     </button>
                 </li>
                 <li class="list" id="feedback">

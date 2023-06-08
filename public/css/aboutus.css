@@ -1,0 +1,119 @@
+*,html{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+:root{
+    --text-first: #ffffff;
+    --text-second: #34A0A4;
+    --text-third: #B0B0B0;
+    --text-fourth: #00a5cf;
+    --text-fifth: #5093D0;
+    --bg-first: #34A0A4;
+    --bg-second: #34a0a42f;
+    --bg-third: #777E7675;
+    --bg-fourth:#ffffff;
+    --bg-fifth: #f9f9f9;
+    --bg-sixth: #f9f9f9dd;
+    --bg-seventh: #00a5cf;
+    --bg-eighth: #FFFF00;
+    --bg-ninth: #C93939;
+    --bg-tenth: #5093D0;
+    --bg-eleventh: #5092d03f;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background-image: url("../image/Home Background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-x: 0%;
+    background-position-y: -30%;
+}
+.container-body{
+    height: 87%;
+    display: flex;
+}
+.content{
+    margin-left: 50px;
+    z-index: 1;
+}
+.content-header{
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-first);
+}
+.description{
+    width: 1000px;
+    height: 300px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+.description>h4{
+    color: var(--text-second);
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.contact{
+    width: 760px;
+    height: 260px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-top: 30px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.contact>h4{
+    color: var(--text-second);
+    font-size: 20px;
+    font-weight: bold;
+}
+.card-container{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+    height: 160px;
+    border-radius: 10px;
+    background-color: #5092d031;
+}
+.card>.icon{
+    color: var(--text-first);
+    background-color: var(--bg-tenth);
+    padding: 10px;
+    border-radius: 100%;
+    font-size: 18px;
+    position: absolute;
+    transform: translateY(-20px);
+}
+.card>h4{
+    margin-top: 20px;
+}
+.card>span{
+    font-size: 14px;
+}
+.instagram,.whatsapp{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 90%;
+}
+.fa-instagram,.fa-whatsapp{
+    font-size: 18px;
+    margin-right: 10px;
+}
+.instagram>span,.whatsapp>span{
+    font-size: 14px;
+}
+.card-email>span{
+    font-size: 12px;
+}

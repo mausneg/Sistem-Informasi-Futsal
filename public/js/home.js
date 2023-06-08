@@ -61,6 +61,8 @@ function choose(show1,hide1,show2,hide2,show3,hide3){
 const date = new Date()
 var scheduleDate = date.getDate()
 var scheduleMonth = date.getMonth()
+scheduleDate = scheduleDate - ((scheduleDate-1)%4)
+
 var scheduleYear = date.getFullYear()
 const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -71,6 +73,7 @@ function getFebDays(year){
     return isLeapYear(year) ? 29 : 28
 }
 function scheduleData(response,currDate,currMonth,currYear,i){
+    console.log(response)
     const currDay = new Date(currYear, currMonth, currDate).getDay();
     const words = response.split(" ")
     console.log(words)
@@ -112,7 +115,6 @@ function generateSchedule(currDate,currMonth,currYear){
     $(".schedule-list").html("");
     if(currDate < 1){
         scheduleMonth--
-        console.log(scheduleMonth)
         scheduleDate = daysOfMonth[scheduleMonth] - (daysOfMonth[scheduleMonth]%4) + 1
         currDate = scheduleDate
         currMonth = scheduleMonth
@@ -131,20 +133,25 @@ function generateSchedule(currDate,currMonth,currYear){
     }
     $(".schedule-month").html(monthNames[currMonth])
     $(".schedule-year").html(currYear)
+    let delay = 0
     for (let i = 0; i < 4; i++) {
-        if(currDate+i < date.getDate() && currMonth <= date.getMonth() && currYear <= date.getFullYear()) continue
+        if(currDate+i < date.getDate() - ((date.getDate()-1)%4) && currMonth <= date.getMonth() && currYear <= date.getFullYear()) continue
         if(currDate+i > daysOfMonth[currMonth]){
             return
         } 
-        getSchedule(currDate,currMonth,currYear,i)
+        setTimeout(function () {
+            getSchedule(currDate, currMonth, currYear, i)
+          }, delay)
+        delay += 30
     }
 
 }
 function schedule(){
     const date = new Date()
-    const currDate = date.getDate()
+    let currDate = date.getDate()
     const currMonth = date.getMonth()
     const currYear = date.getFullYear()
+    currDate = currDate - ((currDate-1)%4)
     generateSchedule(currDate,currMonth,currYear)
 }
 schedule()
@@ -158,7 +165,7 @@ $(".schedule-left").click(function (e) {
     const currDate = date.getDate()
     const currMonth = date.getMonth()
     const currYear = date.getFullYear()
-    if(scheduleDate-4 < currDate && scheduleMonth-1 < currMonth && scheduleYear <= currYear) return
+    if(scheduleDate-4 < currDate-4 && scheduleMonth-1 < currMonth && scheduleYear <= currYear) return
     scheduleDate-=4
     generateSchedule(scheduleDate,scheduleMonth,scheduleYear)
 

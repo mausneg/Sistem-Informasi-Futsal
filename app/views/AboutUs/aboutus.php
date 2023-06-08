@@ -29,7 +29,7 @@
                             <div class="instagram">
                                 <i class="fa-brands fa-instagram"></i>
                                 <span>mataramfutsalcenter</span>
-                            </div>
+                            </div> 
                             <div class="whatsapp">
                                 <i class="fa-brands fa-whatsapp"></i>
                                 <span>085200001111</span>

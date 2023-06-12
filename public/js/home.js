@@ -165,7 +165,7 @@ $(".schedule-left").click(function (e) {
     const currDate = date.getDate()
     const currMonth = date.getMonth()
     const currYear = date.getFullYear()
-    if(scheduleDate-4 < currDate-4 && scheduleMonth-1 < currMonth && scheduleYear <= currYear) return
+    if(scheduleDate-4 < currDate && scheduleMonth-1 < currMonth && scheduleYear <= currYear) return
     scheduleDate-=4
     generateSchedule(scheduleDate,scheduleMonth,scheduleYear)
 

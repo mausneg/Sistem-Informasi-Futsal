@@ -1,150 +1,137 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
+-- MariaDB dump 10.19  Distrib 10.4.25-MariaDB, for Win64 (AMD64)
 --
--- Host: 127.0.0.1
--- Generation Time: May 29, 2023 at 10:46 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: 127.0.0.1    Database: sifootdb
+-- ------------------------------------------------------
+-- Server version	10.4.25-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Database: `sifootdb`
+-- Table structure for table `admin`
 --
 
--- --------------------------------------------------------
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `admin` (
+  `email_admin` varchar(100) NOT NULL,
+  `username_admin` varchar(100) DEFAULT NULL,
+  `password_admin` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`email_admin`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin`
+--
+
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `booking`
 --
 
+DROP TABLE IF EXISTS `booking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking` (
-  `no_booking` int(11) NOT NULL,
+  `no_booking` int(11) NOT NULL AUTO_INCREMENT,
   `field_name` varchar(100) NOT NULL,
   `date` datetime(6) NOT NULL,
   `booking_status` enum('booked','confirm','cancelled','pending','end') NOT NULL,
-  `email_customer` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `email_customer` varchar(100) NOT NULL,
+  PRIMARY KEY (`no_booking`),
+  KEY `FK_customer_booking` (`email_customer`),
+  CONSTRAINT `FK_customer_booking` FOREIGN KEY (`email_customer`) REFERENCES `customer` (`email_customer`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`no_booking`, `field_name`, `date`, `booking_status`, `email_customer`) VALUES
-(30, 'Sintetis', '2023-04-30 09:00:00.000000', 'pending', 'mausneg@gmail.com'),
-(31, 'Sintetis', '2023-05-01 09:00:00.000000', 'pending', 'mausneg@gmail.com');
-
--- --------------------------------------------------------
+LOCK TABLES `booking` WRITE;
+/*!40000 ALTER TABLE `booking` DISABLE KEYS */;
+INSERT INTO `booking` VALUES (36,'Sintetis','2023-05-31 08:00:00.000000','confirm','mausneg@gmail.com'),(37,'Sintetis','2023-06-01 13:00:00.000000','pending','mausneg@gmail.com'),(38,'Sintetis','2023-06-01 11:00:00.000000','booked','mausneg@gmail.com'),(39,'Sintetis','2023-06-04 09:00:00.000000','confirm','amir@gmail.com'),(40,'Vinyl','2023-06-09 18:00:00.000000','confirm','sam@gmail.com');
+/*!40000 ALTER TABLE `booking` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `customer`
 --
 
+DROP TABLE IF EXISTS `customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `customer` (
   `email_customer` varchar(100) NOT NULL,
   `username_customer` varchar(100) NOT NULL,
   `contact_customer` varchar(100) NOT NULL,
   `password_customer` varchar(100) NOT NULL,
-  `pp_customer` blob NOT NULL
+  `pp_customer` blob NOT NULL,
+  PRIMARY KEY (`email_customer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`email_customer`, `username_customer`, `contact_customer`, `password_customer`, `pp_customer`) VALUES
-('mausneg@gmail.com', 'mausneg', '081234567890', '$2y$10$tlOPFslYrcm2/qPCavRU3.QR0Wnx6Mui6qZVt.V4KqXqqypRFpEsW', ''),
-('q@gmail.com', 'q', 'q', '$2y$10$QkoXFuyPmrfjDpT7ZQQpq.wn7Ju5SBOF.D/krWDDuSxMhj/B4J4Gq', '');
-
--- --------------------------------------------------------
+LOCK TABLES `customer` WRITE;
+/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES ('amir@gmail.com','amirhamzah','09834192181','$2y$10$cLTuH0R6MU9EIbppQjIV8OczcEW4lkif8saNPk.xmzsZQVj7hW2KK',''),('mausneg@gmail.com','mausneg','081234567890','$2y$10$tlOPFslYrcm2/qPCavRU3.QR0Wnx6Mui6qZVt.V4KqXqqypRFpEsW',''),('q@gmail.com','q','q','$2y$10$QkoXFuyPmrfjDpT7ZQQpq.wn7Ju5SBOF.D/krWDDuSxMhj/B4J4Gq',''),('sam@gmail.com','sam123','081234567890','$2y$10$6p1dEnAZkjp6.dwZJF527ubiGP5EDQOIxgJHbGKPUmMRnMOZY3SEy','');
+/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `payment`
 --
 
+DROP TABLE IF EXISTS `payment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `payment` (
-  `no_payment` int(11) NOT NULL,
+  `no_payment` int(11) NOT NULL AUTO_INCREMENT,
   `no_booking` int(11) NOT NULL,
   `id_method_payment` varchar(100) NOT NULL,
   `method_payment` varchar(10) NOT NULL,
   `amount` int(100) NOT NULL,
-  `date_booking` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `date_booking` datetime NOT NULL,
+  PRIMARY KEY (`no_payment`),
+  KEY `fk_payment_booking` (`no_booking`),
+  CONSTRAINT `fk_payment_booking` FOREIGN KEY (`no_booking`) REFERENCES `booking` (`no_booking`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`no_payment`, `no_booking`, `id_method_payment`, `method_payment`, `amount`, `date_booking`) VALUES
-(22, 30, '0712398721', 'gopay', 120000, '2023-05-29 11:57:49'),
-(23, 31, '7340732490', 'shopee', 120000, '2023-05-29 13:43:31');
+LOCK TABLES `payment` WRITE;
+/*!40000 ALTER TABLE `payment` DISABLE KEYS */;
+INSERT INTO `payment` VALUES (24,36,'4534','dana',120000,'2023-05-30 23:57:14'),(25,40,'890070890089','gopay',120000,'2023-06-02 15:56:03'),(26,37,'1212121','dana',120000,'2023-06-10 17:40:31');
+/*!40000 ALTER TABLE `payment` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `booking`
---
-ALTER TABLE `booking`
-  ADD PRIMARY KEY (`no_booking`),
-  ADD KEY `FK_customer_booking` (`email_customer`);
-
---
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`email_customer`);
-
---
--- Indexes for table `payment`
---
-ALTER TABLE `payment`
-  ADD PRIMARY KEY (`no_payment`),
-  ADD KEY `fk_payment_booking` (`no_booking`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `booking`
---
-ALTER TABLE `booking`
-  MODIFY `no_booking` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
---
--- AUTO_INCREMENT for table `payment`
---
-ALTER TABLE `payment`
-  MODIFY `no_payment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `booking`
---
-ALTER TABLE `booking`
-  ADD CONSTRAINT `FK_customer_booking` FOREIGN KEY (`email_customer`) REFERENCES `customer` (`email_customer`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `payment`
---
-ALTER TABLE `payment`
-  ADD CONSTRAINT `fk_payment_booking` FOREIGN KEY (`no_booking`) REFERENCES `booking` (`no_booking`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-06-12 22:49:36

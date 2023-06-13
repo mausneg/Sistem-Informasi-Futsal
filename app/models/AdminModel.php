@@ -38,6 +38,11 @@
             $this->db->execute();
             return $this->db->results();
         }
+        public function getBooking(){
+            $this->db->query("select * from booking order by no_booking desc");
+            $this->db->execute();
+            return $this->db->results();
+        }
         
         
     }  

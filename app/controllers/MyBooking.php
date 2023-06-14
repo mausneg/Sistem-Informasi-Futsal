@@ -40,7 +40,7 @@
         }
         public function cancel(){
             if ($this->model("CustomerModel")->deleteBooking($_POST["noBooking"]) > 0) {
-                Flasher::setFlash("Pembatalan Booking ","Berhasil","success");
+                Flasher::setFlash("Booking has been cancelled","success");
                 unset($_SESSION["booking"]);
             }
             exit;

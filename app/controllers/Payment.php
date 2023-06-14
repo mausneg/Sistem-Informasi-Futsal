@@ -7,7 +7,7 @@
             }
             if (!isset($_SESSION["booking"])) {
                 header("Location: /mybooking");
-                Flasher::setFlash("Booking ","Dulu","info");
+                Flasher::setFlash("You haven't booking","info");
                 exit();
             }
             $_SESSION["paymentMethod"] = "dana";

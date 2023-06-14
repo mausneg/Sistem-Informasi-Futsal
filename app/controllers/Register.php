@@ -10,12 +10,12 @@
         }
         public function register(){
             if ($this->model("CustomerModel")->register($_POST) > 0) {
-                Flasher::setFlash("Register ","Berhasil","success");
+                Flasher::setFlash("Register Success","success");
                 header("Location: /login");
                 exit;
             }
             else{
-                Flasher::setFlash("Register ","Gagal","fail");
+                Flasher::setFlash("Register Fail","fail");
                 header("Location: /register");
                 exit;
             }

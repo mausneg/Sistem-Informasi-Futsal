@@ -19,11 +19,11 @@
                         "password" => $_POST["password"],
                         "pp" => $data["pp_customer"]
                     ];
-                    Flasher::setFlash("Login ","Berhasil","success");
+                    Flasher::setFlash("Login Success","success");
                     header("Location: /home");
                     exit;
                 }else{
-                    Flasher::setFlash("Login ","Gagal","fail");
+                    Flasher::setFlash("Login Fail","fail");
                     header("Location: /login");
                     exit;
                 }

@@ -20,7 +20,7 @@
                 $_SESSION["account"]["contact"] == $_POST["contact"] &&
                 $_SESSION["account"]["password"] == $_POST["old-password"])
             ) {
-                Flasher::setFlash("Edit Profile ","Dibatalkan","fail");
+                Flasher::setFlash("Edit Profile Fail","fail");
                 header("Location: /home");
                 exit;
             }
@@ -33,18 +33,18 @@
                         "password" => $_POST["confirm-password"],
                         "pp" => $_POST["pp"]
                     ];
-                    Flasher::setFlash("Edit Profile ","Berhasil","success");
+                    Flasher::setFlash("Edit Profile Success","success");
                     header("Location: /home");
                     exit;
                 }
                 else{
-                    Flasher::setFlash("Edit Profile ","Gagal","fail");
+                    Flasher::setFlash("Edit Profile Fail","fail");
                     header("Location: /home");
                     exit;
                 }
             }
             else{
-                Flasher::setFlash("Edit Profile ","Gagal","fail");
+                Flasher::setFlash("Edit Profile Fail","fail");
                 header("Location: /home");
                 exit; 
             }
@@ -81,11 +81,11 @@
                     "email" => $data["email_customer"],
                     "amount" => $amount
                 ];
-                Flasher::setFlash("Booking ","Berhasil","success");
+                Flasher::setFlash("Booking Success","success");
                 exit;
             }
             else{
-                Flasher::setFlash("Booking ","Gagal","fail");
+                Flasher::setFlash("Booking Fail","fail");
                 exit;
             }
         }

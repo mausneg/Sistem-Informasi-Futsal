@@ -10,8 +10,8 @@
                         <th>No</th>
                         <th>No Payment</th>
                         <th>No Booking</th>
-                        <th>Number Method Payment</th>
-                        <th>Method Payment</th>
+                        <th>Number Method</th>
+                        <th>Method</th>
                         <th>Amount</th>
                         <th>Date</th>
                         <th>Time</th>

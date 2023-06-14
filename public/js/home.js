@@ -1,5 +1,6 @@
 $("#home").css("backgroundColor", "white");
 $(".fa-house,.list-text-home").addClass("text-list-select");
+var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
 
 document.getElementsByClassName("info-sintetis")[0].addEventListener("mouseenter",function(){
     const text = "This type of field is a futsal field whose surface uses synthetic grass, this artificial grass can be installed according to the size of the futsal field.This type of field is enjoyed by many futsal players because when they fall it doesn't hurt too much and doesn't cause injuries."
@@ -102,7 +103,7 @@ function getSchedule(date,month,year,i) {
     console.log(schedule)
     $.ajax({
         type: "POST",
-        url: "home/getSchedule",
+        url: baseurl+"home/getSchedule",
         data: {schedule : schedule},
         success: function(response) {
             scheduleData(response,date,month,year,i)
@@ -329,10 +330,10 @@ $(".book-done").click(function() {
     }
     $.ajax({
         type: "POST",
-        url: "home/booking",
+        url: baseurl+"home/booking",
         data: {bookingData: data} ,
         success: function (response) {
-            window.location.assign("/payment")
+            window.location.assign(baseurl+"/payment")
         },
         error: function(xhr, status, error) {
             console.log('Error: ' + error);

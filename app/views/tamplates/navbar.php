@@ -1,5 +1,7 @@
         <div class="navbar">
-            <img src="/image/Logo Sifoot 2.png" alt="" class="logo">
+            <img src="<?php
+                echo BASEURL;
+            ?>/image/Logo Sifoot 2.png" alt="" class="logo">
             <ul class="navbar-list">
                 <li class="list" id="home">
                     <button class="list-btn list-btn-home">

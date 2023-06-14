@@ -47,8 +47,8 @@
                     <h4 class="list-title"></h4>
                 </div>
                 <div class="header-list-content">
-                    <img src="/image/default pp.jpg" alt="">
-                    <form method="post" action="/home/edit">
+                    <img src="<?php echo BASEURL . "/image/default pp.jpg"?>" alt="">
+                    <form method="post" action="<?php echo BASEURL . "home/edit"?>">
                         <h4>Email</h4>
                         <input type="email" value="<?php
                             echo $_SESSION["account"]["email"];

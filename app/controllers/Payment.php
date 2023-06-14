@@ -2,11 +2,11 @@
     class Payment extends Controller{
         public function index(){
             if (!isset($_SESSION["account"])) {
-                header("Location: /login");
+                header("Location:".BASEURL."login");
                 exit();
             }
             if (!isset($_SESSION["booking"])) {
-                header("Location: /mybooking");
+                header("Location:".BASEURL."mybooking");
                 Flasher::setFlash("You haven't booking","info");
                 exit();
             }
@@ -36,15 +36,15 @@
         }
         public function summary(){
             if (!isset($_SESSION["account"])) {
-                header("Location: /login");
+                header("Location: ".BASEURL."login");
                 exit();
             }
             if (!isset($_SESSION["booking"])) {
-                header("Location: /mybooking");
+                header("Location: ".BASEURL."mybooking");
                 exit();
             }
             if (!isset($_SESSION["summary"])) {
-                header("Location: /payment");
+                header("Location: ".BASEURL."payment");
                 exit();
             }
             $data["title"] = "Payment";
@@ -55,10 +55,10 @@
             $this->view("Payment/summary");
             $this->view("tamplates/footer",$data);
         }
-        public function home(){
+        public function reset(){
             unset($_SESSION["booking"]);
             unset($_SESSION["summary"]);
-            header("Location: /home");
+            exit;
         }
     }
 ?>

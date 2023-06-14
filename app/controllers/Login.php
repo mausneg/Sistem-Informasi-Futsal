@@ -20,11 +20,11 @@
                         "pp" => $data["pp_customer"]
                     ];
                     Flasher::setFlash("Login Success","success");
-                    header("Location: /home");
+                    header("Location:".BASEURL."home");
                     exit;
                 }else{
                     Flasher::setFlash("Login Fail","fail");
-                    header("Location: /login");
+                    header("Location:".BASEURL."login");
                     exit;
                 }
 

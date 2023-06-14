@@ -1,9 +1,10 @@
 $("#data-booking").css("backgroundColor", "#dbedee");
 $(".fa-file-circle-check,.list-text-data-booking").addClass("text-list-select");
+var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
 
 $.ajax({
     type: "POST",
-    url: "DataBooking/getBooking",
+    url: baseurl+"DataBooking/getBooking",
     success: function (response) {
         console.log(response);
         const words = response.split(" ");

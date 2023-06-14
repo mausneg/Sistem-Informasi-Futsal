@@ -1,30 +1,32 @@
 $("#dashboard").css("backgroundColor", "#dbedee");
 $(".fa-chart-line,.list-text-dashboard").addClass("text-list-select");
 
+var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+
 $.ajax({
     type: "POST",
-    url: "dashboard/countCustomer",
+    url: baseurl+"dashboard/countCustomer",
     success: function (response) {
         $(".customer-number").html(response);
     }
 });
 $.ajax({
     type: "POST",
-    url: "dashboard/countBooking",
+    url: baseurl+"dashboard/countBooking",
     success: function (response) {
         $(".booking-number").html(response);
     }
 });
 $.ajax({
     type: "POST",
-    url: "dashboard/countDone",
+    url: baseurl+"dashboard/countDone",
     success: function (response) {
         $(".done-number").html(response);
     }
 });
 $.ajax({
     type: "POST",
-    url: "dashboard/getTransaction",
+    url: baseurl+"dashboard/getTransaction",
     success: function (response) {
         words = response.split(" ")
         let i = -1

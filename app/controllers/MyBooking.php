@@ -2,7 +2,7 @@
     class MyBooking extends Controller{
         public function index(){
             if (!isset($_SESSION["account"])) {
-                header("Location: login");
+                header("Location:".BASEURL."login");
             }
             $data["title"] = "My Booking";
             $data["style"] = "mybooking";

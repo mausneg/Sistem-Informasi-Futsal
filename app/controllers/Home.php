@@ -2,7 +2,7 @@
     class Home extends Controller{
         public function index(){
             if (!isset($_SESSION["account"])) {
-                header("Location: /login");
+                header("Location:".BASEURL."login");
                 exit();
             }
             $data["title"] = "Home";
@@ -21,7 +21,7 @@
                 $_SESSION["account"]["password"] == $_POST["old-password"])
             ) {
                 Flasher::setFlash("Edit Profile Fail","fail");
-                header("Location: /home");
+                header("Location:".BASEURL."/home");
                 exit;
             }
             if ($_POST["old-password"] == $_SESSION["account"]["password"]) {
@@ -34,18 +34,18 @@
                         "pp" => $_POST["pp"]
                     ];
                     Flasher::setFlash("Edit Profile Success","success");
-                    header("Location: /home");
+                    header("Location:".BASEURL."/home");
                     exit;
                 }
                 else{
                     Flasher::setFlash("Edit Profile Fail","fail");
-                    header("Location: /home");
+                    header("Location:".BASEURL."/home");
                     exit;
                 }
             }
             else{
                 Flasher::setFlash("Edit Profile Fail","fail");
-                header("Location: /home");
+                header("Location:".BASEURL."/home");
                 exit; 
             }
         }
@@ -53,7 +53,7 @@
             if ($this->model("CustomerModel")->delete($_POST) > 0) {
                 session_destroy();
                 Flasher::setFlash("Penghapusan Akun ","Berhasil","success");
-                header("Location: /login");
+                header("Location:".BASEURL."/login");
                 exit; 
             }
         }

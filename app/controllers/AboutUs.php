@@ -12,6 +12,7 @@
             $this->view("tamplates/header-content");
             $this->view("AboutUs/aboutus");
             $this->view("tamplates/footer",$data);
+            
         }
     }
 ?>

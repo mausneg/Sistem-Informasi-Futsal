@@ -13,19 +13,19 @@
                     </div>
                     <div class="payment-method-body">
                         <div class="card selected-card dana">
-                            <img src="/image/dana.jpg" alt="">
+                            <img src="<?php echo BASEURL . "/image/dana.jpg"?>" alt="">
                             <div>PAY WITH DANA</div>
                         </div>
                         <div class="card gopay">
-                            <img src="/image/gopay.jpg" alt="">
+                            <img src="<?php echo BASEURL . "/image/gopay.jpg"?>" alt="">
                             <div>PAY WITH GOPAY</div>
                         </div>
                         <div class="card shopee">
-                            <img src="/image/shopee.jpg" alt="">
+                            <img src="<?php echo BASEURL . "/image/shopee.jpg"?>" alt="">
                             <div>PAY WITH SHOPEE</div>
                         </div>
                         <div class="card qris">
-                            <img src="/image/qris.jpg" alt="">
+                            <img src="<?php echo BASEURL . "/image/qris.jpg"?>" alt="">
                             <div>PAY WITH QRIS</div>
                         </div>
                     </div>

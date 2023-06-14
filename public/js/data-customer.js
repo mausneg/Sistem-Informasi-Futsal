@@ -1,9 +1,11 @@
 $("#data-customer").css("backgroundColor", "#dbedee");
 $(".fa-users,.list-text-data-customer").addClass("text-list-select");
 
+var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+
 $.ajax({
     type: "POST",
-    url: "DataCustomer/getCustomer",
+    url: baseurl+"DataCustomer/getCustomer",
     success: function (response) {
         console.log(response);
         const words = response.split(" ");
@@ -14,7 +16,6 @@ $.ajax({
             tr.append($("<td>"+String(++number)+"</td>"))
             j = 0
             for (j = i; j < i+4; j++) {
-                if(j - i == 3) words[j] = words[j].substring(0, 8)
                 tr.append($("<td>"+words[j]+"</td>"))
             }
             i = j

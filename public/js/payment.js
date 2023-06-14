@@ -1,6 +1,8 @@
 $("#payment").css("backgroundColor", "white")
 $(".fa-money-bill-wave,.list-text-payment").addClass("text-list-select")
 
+var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+
 first = true
 if(first){
     first =  false
@@ -10,7 +12,7 @@ if(first){
 function setPaymentMethod(method) {
     $.ajax({
         type: "POST",
-        url: "payment/setPaymentMethod",
+        url: baseurl+"payment/setPaymentMethod",
         data: {paymentMethod : method},
         success: function (response) {
             
@@ -60,10 +62,10 @@ $(".checkout-btn").click(function () {
     }
     $.ajax({
         type: "POST",
-        url: "payment/checkout",
+        url: baseurl+"payment/checkout",
         data: {checkout : checkout},
         success: function (response) {
-            window.location.assign("payment/summary")
+            window.location.assign(baseurl+"payment/summary")
         },error: function(xhr, status, error) {
             console.log('Error: ' + error);
           }
@@ -73,9 +75,10 @@ $(".checkout-btn").click(function () {
 $(".summary-btn").click(function () { 
     $.ajax({
         type: "POST",
-        url: "payment/home",
+        url: baseurl+"payment/reset",
         success: function (response) {
-            window.location.assign("home")
+            console.log(response)
+            window.location.assign(baseurl+"home")
         }
     });
 });

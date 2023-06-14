@@ -1,6 +1,6 @@
 $("#mybooking").css("backgroundColor", "white");
 $(".fa-list-check,.list-text-mybooking").addClass("text-list-select");
-
+var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
 
 function bookingList(response) {
     $(".content-main-body").html("")
@@ -33,7 +33,7 @@ function contentBtn(e,status) {
     $(e).addClass("btn-select")
     $.ajax({
         type: "POST",
-        url: "mybooking/getBooking",
+        url: baseurl+"mybooking/getBooking",
         data: {status : status},
         success: function (response) {
             bookingList(response)
@@ -59,10 +59,10 @@ $(".content-main-body").on("click", ".checkout-btn", function() {
     const noBooking = $(this).parent().parent().children().first().html()
     $.ajax({
         type: "POST",
-        url: "mybooking/checkout",
+        url: baseurl+"mybooking/checkout",
         data: {noBooking:noBooking},
         success: function () {
-            window.location.assign("/payment")
+            window.location.assign(baseurl+"/payment")
         }
     });
 });
@@ -70,10 +70,10 @@ $(".content-main-body").on("click", ".cancel-btn", function() {
     const noBooking = $(this).parent().parent().children().first().html()
     $.ajax({
         type: "POST",
-        url: "mybooking/cancel",
+        url: baseurl+"mybooking/cancel",
         data: {noBooking:noBooking},
         success: function () {
-            window.location.assign("/mybooking")
+            window.location.assign(baseurl+"/mybooking")
         }
     });
 });

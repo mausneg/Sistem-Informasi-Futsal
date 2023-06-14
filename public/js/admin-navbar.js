@@ -1,22 +1,24 @@
+var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+
 $(".list-btn-dashboard").click(function () { 
-    window.location.assign("/dashboard");
+    window.location.assign(baseurl+"dashboard");
 });
 $(".list-btn-data-booking").click(function () { 
-    window.location.assign("/databooking")
+    window.location.assign(baseurl+"databooking")
 });
 $(".list-btn-data-customer").click(function () { 
-    window.location.assign("/datacustomer")
+    window.location.assign(baseurl+"datacustomer")
 });
 $(".list-btn-transaction").click(function () { 
-    window.location.assign("/transaction")
+    window.location.assign(baseurl+"transaction")
 });
 $(".list-btn-report").click(function () { 
-    window.location.assign("/report")
+    window.location.assign(baseurl+"report")
 });
 $(".logout-btn").click(function () { 
     $.ajax({
         type: "POST",
-        url: "home/logout",
+        url: baseurl+"home/logout",
         data: "data",
         success: function () {
             location.reload()

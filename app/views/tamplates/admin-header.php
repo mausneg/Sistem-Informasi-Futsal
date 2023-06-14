@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/header-content.css">
-    <link rel="stylesheet" href="/css/<?php echo $data["style"]?>.css">
-    <link rel="stylesheet" href="/css/admin-navbar.css">
+    <link rel="stylesheet" href= <?php echo BASEURL . "css/admin-header-content.css"?>>
+    <link rel="stylesheet" href= <?php echo BASEURL . "css/" . $data["style"] .".css" ?>>
+    <link rel="stylesheet" href= <?php echo BASEURL . "css/admin-navbar.css" ?>>
 </head>
 <body>

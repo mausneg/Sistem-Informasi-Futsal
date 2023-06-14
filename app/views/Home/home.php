@@ -98,7 +98,7 @@
                 <h2 class="lapangan-text">Lapangan Futsal</h2>
                 <div class="field-info">
                     <div class="info-card sintetis">
-                        <img src="../image/sintetis.jpg" alt="" class="info-img">
+                        <img src="<?php echo BASEURL."image/sintetis.jpg"?>" alt="" class="info-img">
                         <div class="info-data">
                             <h4 class="sintetis-text">RUMPUT SINTETIS</h4>
                             <h4 class="sintetis-harga">120K/JAM</h4>
@@ -106,7 +106,7 @@
                         <i class="fa-solid fa-info info-sintetis"></i>
                     </div>
                     <div class="info-card vinyl">
-                        <img src="../image/vinyl.jpg" alt="" class="info-img">
+                        <img src="<?php echo BASEURL."image/vinyl.jpg"?>" alt="" class="info-img">
                         <div class="info-data">
                             <h4 class="rumput-text">RUMPUT VINYL</h4>
                             <h4 class="sintetis-harga">150K/JAM</h4>

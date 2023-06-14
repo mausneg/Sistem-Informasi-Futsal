@@ -11,7 +11,7 @@
                         <th>Email</th>
                         <th>Username</th>
                         <th>Contact</th>
-                        <th>Passowrd</th>
+                        <th>Password</th>
                     </tr>
                     
                 </table>

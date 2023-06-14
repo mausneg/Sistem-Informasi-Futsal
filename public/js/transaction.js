@@ -1,9 +1,10 @@
 $("#transaction").css("backgroundColor", "#dbedee");
 $(".fa-money-bill-wave,.list-text-transaction").addClass("text-list-select");
+var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
 
 $.ajax({
     type: "POST",
-    url: "Transaction/getTransactions",
+    url: baseurl+"Transaction/getTransactions",
     success: function (response) {
         const words = response.split(" ");
         let i = 0;
@@ -45,7 +46,7 @@ function updateDatabase(no,value) {
     }
     $.ajax({
         type: 'POST',
-        url: "Transaction/updateStatus",
+        url: baseurl+"Transaction/updateStatus",
         data: {transaction: data },
         success: function(response) {
             window.location.reload();

@@ -43,7 +43,18 @@
             $this->db->execute();
             return $this->db->results();
         }
-        
+        public function getTransactions(){   
+            $this->db->query("select * from payment order by no_booking desc");
+            $this->db->execute();
+            return $this->db->results();
+        }
+        public function updateStatus($data){
+            $this->db->query("update payment set status_payment = :status where no_payment = :no");
+            $this->db->bind("status",$data["status"]);
+            $this->db->bind("no",$data["no"]);
+            $this->db->execute();
+            return $this->db->row();
+        }
         
     }  
 ?>

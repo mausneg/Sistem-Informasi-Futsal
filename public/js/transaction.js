@@ -3,7 +3,7 @@ $(".fa-money-bill-wave,.list-text-transaction").addClass("text-list-select");
 
 $.ajax({
     type: "POST",
-    url: "Transaction/getPayment",
+    url: "Transaction/getTransactions",
     success: function (response) {
         const words = response.split(" ");
         let i = 0;

@@ -13,8 +13,8 @@
             $this->view('Transaction/transaction');
             $this->view('tamplates/admin-footer',$data);
         }
-        public function getPayment(){
-            $data = $this->model('AdminModel')->getPayment();
+        public function getTransactions(){
+            $data = $this->model('AdminModel')->getTransactions();
             foreach ($data as $row) {
                 foreach ($row as $key => $value) {
                     echo $value . " ";

@@ -17,8 +17,8 @@ $.ajax({
                 if(j - i == 7){
                     const status = $("<select class='payment-status' name='payment-status'></select>")
                     if(words[j] == "paid"){
-                        status.append($("<option value='paid'>Paid</option>"))
-                        status.append($("<option value='unpaid'>Unpaid</option>"))
+                        status.append($("<option class='paid' value='paid'>Paid</option>"))
+                        status.append($("<option class='unpaid' value='unpaid'>Unpaid</option>"))
                     }
                     else{
                         status.append($("<option value='unpaid'>Unpaid</option>"))

@@ -37,32 +37,42 @@ body{
     font-weight: bold;
 }
 .content-body{
-    width: 1000px;
+    width: 1075px;
 }
+table, th, td {
+    border: 1px solid var(--bg-third);
+  }
 table{
+    border-collapse: collapse;
     margin-top: 20px;
     table-layout: auto;
     width: 100%;
-    border-collapse: collapse;
     box-shadow: 4px 6px 4px #00000025;
-    border-radius: 10px;
+    text-align: center;
+}
+th, td{
+    padding: 0px 10px;
+    box-sizing: border-box;
 }
 tr{
     height: 50px;
     width: auto;
 }
-th{
+/* th{
     background-color: #b7e4c7;
 }
 td{
-    text-align: center;
     background-color: #d8f3dc;
-}
-.payment-status{
+} */
+select{
     width: 100px;
     height: 30px;
-    border-radius: 5px;
     border: none;
     outline: none;
-    cursor: pointer;
+    cursor: pointer;   
+    background-color: #d8f3dc;
+}
+option{
+    background-color: white;
+    border-radius: 0px;
 }

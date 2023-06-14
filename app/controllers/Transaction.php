@@ -25,7 +25,7 @@
         }
         public function updateStatus(){
             if($this->model('AdminModel')->updateStatus($_POST["transaction"])>0){
-                Flasher::setFlash("Transaction ","has been updated","success");
+                Flasher::setFlash("Transaction has been updated","success");
             }          
             exit();
         }

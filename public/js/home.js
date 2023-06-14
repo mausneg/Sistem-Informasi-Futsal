@@ -333,7 +333,7 @@ $(".book-done").click(function() {
         url: baseurl+"home/booking",
         data: {bookingData: data} ,
         success: function (response) {
-            window.location.assign(baseurl+"/payment")
+            window.location.assign(baseurl+"payment")
         },
         error: function(xhr, status, error) {
             console.log('Error: ' + error);

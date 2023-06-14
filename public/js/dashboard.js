@@ -45,3 +45,12 @@ $.ajax({
         }
     }
 });
+$(".card-footer-customer").click(function (e) { 
+    window.location.assign(baseurl+"/datacustomer")
+});
+$(".card-footer-booking").click(function (e) { 
+    window.location.assign(baseurl+"/databooking")
+});
+$(".card-footer-done").click(function (e) { 
+    window.location.assign(baseurl+"/transaction")
+});

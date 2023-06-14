@@ -5,6 +5,21 @@
         public function __construct(){
             $this->db = new Database();
         }
+        public function register($data){
+            $query = "insert into admin values (:username,:email,:password)";
+            $this->db->query($query);
+            $this->db->bind("username",$data["username"]);
+            $this->db->bind("email",$data["email"]);
+            $this->db->bind("password",password_hash($data["password"],PASSWORD_DEFAULT));
+            $this->db->execute();
+            return $this->db->row();
+        }
+        public function login($data){
+            $query = "select * from admin where username_admin= :username or email_admin= :username";
+            $this->db->query($query);
+            $this->db->bind("username",$data["username"]);
+            return $this->db->result();
+        }
         public function countCustomer(){
             $this->db->query("select * from customer");
             $this->db->execute();

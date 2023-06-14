@@ -34,11 +34,10 @@
 				<a href="<?php echo BASEURL?>login" class="login">Login here!</a>
 			</div>
 		</div>
-		<form action="<?php echo BASEURL?>register/register" method="post">
+		<form action="<?php echo BASEURL?>AdminRegister/register" method="post">
 			<h2 class="sign-up">Sign up</h2>
 			<input type="email" placeholder="Enter email" class="input email" required name="email" autocomplete="off">
 			<input type="text" placeholder="Create username" class="input username" required name="username" autocomplete="off">
-			<input type="text" placeholder="Contact number" class="input contact" required name="contact" autocomplete="off">	
 			<div class="input btn-password">
 				<input type="password" placeholder="password" class="password" required name="password" autocomplete="off">
 				<button type="button" class="show-hide"><i id="eye-icon-pass" class="fa-solid fa-eye-slash"></i></button>

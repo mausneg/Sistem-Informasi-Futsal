@@ -43,6 +43,11 @@
             $this->db->execute();
             return $this->db->results();
         }
+        public function getCustomer(){
+            $this->db->query("select * from customer");
+            $this->db->execute();
+            return $this->db->results();
+        }
         public function getTransactions(){   
             $this->db->query("select * from payment order by no_booking desc");
             $this->db->execute();

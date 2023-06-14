@@ -47,8 +47,8 @@
                     <h4 class="list-title"></h4>
                 </div>
                 <div class="header-list-content">
-                    <img src="/image/default pp.jpg" alt="">
-                    <form method="post" action="/home/edit">
+                    <img src="<?php echo BASEURL . "/image/default pp.jpg"?>" alt="">
+                    <form method="post" action="<?php echo BASEURL . "home/edit"?>">
                         <h4>Email</h4>
                         <input type="email" value="<?php
                             echo $_SESSION["account"]["email"];
@@ -57,10 +57,6 @@
                         <input type="text" value="<?php
                             echo $_SESSION["account"]["username"];
                         ?>" required name="username" disabled autocomplete="off">
-                        <h4>Contact</h4>
-                        <input type="text" value="<?php
-                            echo $_SESSION["account"]["contact"];
-                        ?>" required name="contact" disabled>
                         <h4 class="old-password-text">Password</h4>
                         <input type="password" value="<?php
                             echo $_SESSION["account"]["password"];

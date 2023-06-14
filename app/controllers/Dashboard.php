@@ -1,10 +1,10 @@
 <?php
     class Dashboard extends Controller{
         public function index(){
-            // if (!isset($_SESSION["account"])) {
-            //     header("Location: /login");
-            //     exit();
-            // }
+            if (!isset($_SESSION["account"])) {
+                header("Location:".BASEURL."login");
+                exit();
+            }
             $data["title"] = "Dashboard";
             $data["style"] = "dashboard";
             $data["script"] = "dashboard";

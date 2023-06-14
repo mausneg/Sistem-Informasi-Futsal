@@ -15,6 +15,12 @@
             $this->db->execute();
             return $this->db->row();
         }
+        public function login($data){
+            $query = "select * from customer where username_customer= :username or email_customer= :username";
+            $this->db->query($query);
+            $this->db->bind("username",$data["username"]);
+            return $this->db->result();
+        }
         public function edit($data){
             $query = "update customer set username_customer = :username, contact_customer = :contact, password_customer = :password where email_customer = :email";
             $this->db->query($query);

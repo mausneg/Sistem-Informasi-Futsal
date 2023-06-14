@@ -1,10 +1,10 @@
 <?php
     class Transaction extends Controller{
         public function index(){
-            // if (!isset($_SESSION["account"])) {
-            //     header("Location: /login");
-            //     exit();
-            // }
+            if (!isset($_SESSION["account"])) {
+                header("Location:".BASEURL."login");
+                exit();
+            }
             $data["title"] = "Transaction";
             $data["style"] = "transaction";
             $data["script"] = "transaction";

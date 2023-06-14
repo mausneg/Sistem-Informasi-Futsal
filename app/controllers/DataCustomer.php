@@ -1,10 +1,10 @@
 <?php
     class DataCustomer extends Controller{
         public function index(){
-            // if (!isset($_SESSION["account"])) {
-            //     header("Location: /login");
-            //     exit();
-            // }
+            if (!isset($_SESSION["account"])) {
+                header("Location:".BASEURL."login");
+                exit();
+            }
             $data["title"] = "Data Customer";
             $data["style"] = "data-customer";
             $data["script"] = "data-customer";

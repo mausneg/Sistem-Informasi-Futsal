@@ -127,6 +127,7 @@ body{
 }
 .transaksi-list-body{
     display: flex;
+    height: 230px;
     flex-direction: column;
     padding: 30px;
     box-sizing: border-box;

@@ -1,0 +1,68 @@
+*,html{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+:root{
+    --text-first: #ffffff;
+    --text-second: #34A0A4;
+    --text-third: #B0B0B0;
+    --text-fourth: #00a5cf;
+    --text-fifth: #5093D0;
+    --bg-first: #34A0A4;
+    --bg-second: #34a0a42f;
+    --bg-third: #777E7675;
+    --bg-fourth:#ffffff;
+    --bg-fifth: #f9f9f9;
+    --bg-sixth: #f9f9f9dd;
+    --bg-seventh: #00a5cf;
+    --bg-eighth: #FFFF00;
+    --bg-ninth: #C93939;
+    --bg-tenth: #5093D0;
+    --bg-eleventh: #5092d03f;
+}
+body{
+    width: 100%;
+    height: 100vh;
+}
+.container-body{
+    height: 87%;
+    display: flex;
+}
+.content{
+    margin-left: 50px;
+}
+.content-header{
+    font-size: 24px;
+    font-weight: bold;
+}
+.content-body{
+    width: 1000px;
+}
+table{
+    margin-top: 20px;
+    table-layout: auto;
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 4px 6px 4px #00000025;
+    border-radius: 10px;
+}
+tr{
+    height: 50px;
+    width: auto;
+}
+th{
+    background-color: #b7e4c7;
+}
+td{
+    text-align: center;
+    background-color: #d8f3dc;
+}
+.payment-status{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

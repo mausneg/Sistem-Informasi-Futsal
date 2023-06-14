@@ -62,7 +62,7 @@ function choose(show1,hide1,show2,hide2,show3,hide3){
 const date = new Date()
 var scheduleDate = date.getDate()
 var scheduleMonth = date.getMonth()
-scheduleDate = scheduleDate - ((scheduleDate-1)%4)
+scheduleDate = (Math.floor((scheduleDate-1)/4)*4)+1
 
 var scheduleYear = date.getFullYear()
 const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
@@ -152,7 +152,7 @@ function schedule(){
     let currDate = date.getDate()
     const currMonth = date.getMonth()
     const currYear = date.getFullYear()
-    currDate = currDate - ((currDate-1)%4)
+    currDate = (Math.floor((currDate-1)/4)*4)+1
     generateSchedule(currDate,currMonth,currYear)
 }
 schedule()
@@ -163,7 +163,8 @@ $(".schedule-right").click(function (e) {
 });
 $(".schedule-left").click(function (e) { 
     const date = new Date()
-    const currDate = date.getDate()
+    let currDate = date.getDate()
+    currDate = (Math.floor((currDate-1)/4)*4)+1
     const currMonth = date.getMonth()
     const currYear = date.getFullYear()
     if(scheduleDate-4 < currDate && scheduleMonth-1 < currMonth && scheduleYear <= currYear) return

@@ -77,7 +77,6 @@ $(".summary-btn").click(function () {
         type: "POST",
         url: baseurl+"payment/reset",
         success: function (response) {
-            console.log(response)
             window.location.assign(baseurl+"home")
         }
     });

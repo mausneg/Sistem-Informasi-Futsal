@@ -21,6 +21,12 @@
             $this->db->bind("username",$data["username"]);
             return $this->db->result();
         }
+        public function getNotif(){
+            $query = "select no_booking,message,date(timestamp) from notification where email_customer = :email order by no_notification desc limit 3";
+            $this->db->query($query);
+            $this->db->bind("email",$_SESSION["account"]["email"]);
+            return $this->db->results();
+        }
         public function edit($data){
             $query = "update customer set username_customer = :username, contact_customer = :contact, password_customer = :password where email_customer = :email";
             $this->db->query($query);
@@ -80,7 +86,7 @@
             return $this->db->row();
         }
         public function checkout($data){
-            $query = "insert into payment values('',:noBooking,:idPaymentMethod,:paymentMethod,:amount,NOW(),'unpaid')";
+            $query = "insert into payment values('',:noBooking,:idPaymentMethod,:paymentMethod,:amount,NOW(),'unpaid',NULL)";
             $this->db->query($query);
             $this->db->bind("noBooking",$data["checkout"]["noBooking"]);
             $this->db->bind("idPaymentMethod",$data["checkout"]["idPaymentMethod"]);
@@ -92,6 +98,7 @@
             $this->db->query($query);
             $this->db->bind("noBooking",$data["checkout"]["noBooking"]);
             $this->db->execute();
+
             return $this->db->row();
         }
         public function getSchedule($date){

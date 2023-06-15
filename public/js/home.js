@@ -74,10 +74,8 @@ function getFebDays(year){
     return isLeapYear(year) ? 29 : 28
 }
 function scheduleData(response,currDate,currMonth,currYear,i){
-    console.log(response)
     const currDay = new Date(currYear, currMonth, currDate).getDay();
     const words = response.split(" ")
-    console.log(words)
     const headList = $("<div class = 'schedule-list-header'>" + dayNames[(currDay+i)%7] + "</div>")
     const bodyList = $("<div class = 'schedule-list-body'>" + (currDate+i) + "</div>")
     let j = 0
@@ -100,7 +98,6 @@ function getSchedule(date,month,year,i) {
         month : month,
         year : year,
     }
-    console.log(schedule)
     $.ajax({
         type: "POST",
         url: baseurl+"home/getSchedule",

@@ -34,6 +34,7 @@
                         <th>Date</th>
                         <th>Time</th>
                         <th>Status</th>
+                        <th>Admin</th>
                     </tr>
                     
                 </table>

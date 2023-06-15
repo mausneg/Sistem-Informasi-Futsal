@@ -39,20 +39,22 @@ body{
 .content-body{
     width: 1075px;
 }
-.content-body>table{
+table, th, td {
+    border: 1px solid var(--bg-third);
+  }
+table{
+    border-collapse: collapse;
     margin-top: 20px;
     table-layout: auto;
     width: 100%;
+    box-shadow: 4px 6px 4px #00000025;
+    text-align: center;
+}
+th, td{
+    padding: 0px 10px;
+    box-sizing: border-box;
 }
 tr{
-    height: 30px;
-    background-color: #8ecae6;
-}
-th{
-    background-color: #8ecae6;
-}
-td{
-    text-align: center;
-    background-color: #d0efff;
-
+    height: 50px;
+    width: auto;
 }

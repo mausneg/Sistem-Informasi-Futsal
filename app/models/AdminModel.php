@@ -71,10 +71,36 @@
         public function updateStatus($data){
             $this->db->query("update payment set status_payment = :status where no_payment = :no");
             $this->db->bind("status",$data["status"]);
-            $this->db->bind("no",$data["no"]);
+            $this->db->bind("no",$data["no_payment"]);
+            $this->db->execute();
+            
+            $this->db->query("update booking set booking_status = :status where no_booking = :no");
+            $this->db->bind("no",$data["no_booking"]);
+            if($data["status"] == "paid") $this->db->bind("status","confirm");
+            else $this->db->bind("status","pending");
+            $this->db->execute();
+        }
+        public function updateMethod($data){
+            $this->db->query("update payment set method_payment = :method where no_payment = :no");
+            $this->db->bind("method",$data["method"]);
+            $this->db->bind("no",$data["no_payment"]);
+            $this->db->execute();
+        }
+        public function updateNumber($data){
+            $this->db->query("update payment set id_method_payment = :number where no_payment = :no");
+            $this->db->bind("number",$data["number"]);
+            $this->db->bind("no",$data["no_payment"]);
+            $this->db->execute();
+        }
+        public function countPaid(){
+            $this->db->query("select * from payment where status_payment = 'paid'");
             $this->db->execute();
             return $this->db->row();
         }
-        
+        public function countUnpaid(){
+            $this->db->query("select * from payment where status_payment = 'unpaid'");
+            $this->db->execute();
+            return $this->db->row();
+        }
     }  
 ?>

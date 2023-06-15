@@ -250,3 +250,25 @@
     font-size: 18px;
     margin-left: 15px;
 }
+.container-notif{
+    display:flex;
+    flex-direction: column;
+    border-bottom: 1px var(--text-third) solid;
+    padding-bottom: 5px;
+}
+.header-notif{
+    font-size: 12px;
+    color: var(--text-third);
+}
+.body-notif{
+    display:flex;
+    flex-direction: column;
+}
+.body-notif>h4{
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.body-notif>p{
+    font-size: 12px;
+}

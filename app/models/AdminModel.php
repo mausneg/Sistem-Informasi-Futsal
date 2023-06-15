@@ -6,7 +6,7 @@
             $this->db = new Database();
         }
         public function register($data){
-            $query = "insert into admin values (:username,:email,:password)";
+            $query = "insert into admin values (:email,:username,:password)";
             $this->db->query($query);
             $this->db->bind("username",$data["username"]);
             $this->db->bind("email",$data["email"]);
@@ -69,8 +69,9 @@
             return $this->db->results();
         }
         public function updateStatus($data){
-            $this->db->query("update payment set status_payment = :status where no_payment = :no");
+            $this->db->query("update payment set status_payment = :status, email_admin = :admin where no_payment = :no");
             $this->db->bind("status",$data["status"]);
+            $this->db->bind("admin",$_SESSION["account"]["email"]);
             $this->db->bind("no",$data["no_payment"]);
             $this->db->execute();
             
@@ -79,6 +80,22 @@
             if($data["status"] == "paid") $this->db->bind("status","confirm");
             else $this->db->bind("status","pending");
             $this->db->execute();
+
+            $this->db->query("delete from notification where no_booking = :no_booking");
+            $this->db->bind("no_booking", $data["no_booking"]);
+            $this->db->execute();
+            if ($data["status"] == "paid") {
+                $this->db->query("SELECT email_customer FROM booking WHERE no_booking = :no_booking");
+                $this->db->bind("no_booking", $data["no_booking"]);
+                $emailResult = $this->db->result();
+                $this->db->query("INSERT INTO notification VALUES ('', :email_customer, 'payment_accept', NOW(), 0, :admin, :no_booking)");
+                $this->db->bind("no_booking", $data["no_booking"]);
+                $this->db->bind("email_customer", $emailResult["email_customer"]); 
+                $this->db->bind("admin", $_SESSION["account"]["email"]);
+                $this->db->execute();
+                return $this->db->row();
+
+            }
         }
         public function updateMethod($data){
             $this->db->query("update payment set method_payment = :method where no_payment = :no");

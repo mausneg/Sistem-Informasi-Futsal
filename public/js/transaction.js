@@ -50,6 +50,7 @@ $.ajax({
             tr.append($("<td>"+words[++i]+"</td>"))
             const status = generateStatus(words[++i])
             tr.append($("<td></td>").append(status))
+            tr.append($("<td class='email-admin'>"+words[++i]+"</td>"))
             $(".table-transaction").append(tr)
         }
     }

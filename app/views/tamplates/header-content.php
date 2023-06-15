@@ -33,11 +33,7 @@
                 <div class="header-list-header">
                     <h4 class="list-title"></h4>
                 </div>
-                <div class="header-list-content">
-                    <?php
-                        echo "notif";
-                    ?>
-                </div>
+                <div class="header-list-content notif-content"></div>
                 <div class="header-list-footer">
                     <h4</h4>
                 </div>

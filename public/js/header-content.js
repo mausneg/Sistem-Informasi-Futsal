@@ -1,3 +1,5 @@
+var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+
 $(".flasher-button").click(function () { 
     $(".container-flasher").html("")
 });
@@ -70,5 +72,33 @@ $(".old-password,.confirm-password").on("keyup", function (){
     } else{
         $(".message").html("Not Matching").css("color", "red")
         $(".save").attr("disabled", "disabled");
+    }
+});
+function generateNotifBody(word){
+    const body = $("<div class='body-notif'></div>")
+    if(word == "payment_accept"){
+        const title = ($("<h4></h4>")).append("Pembayaranmu sudah terverifikasi")
+        const content = ($("<p></p>")).append("Pembayaranmu sudah kami terima, silahkan cek my booking untuk melihat status bookingmu")
+        body.append(title).append(content)  
+        return body
+    }
+}
+$.ajax({
+    type: "POST",
+    url: baseurl+"Notification/getNotif",
+    success: function (response) {
+        const words = response.split(" ");
+        console.log(words)
+        let i = 0
+        while (i < words.length-1) {
+            const container = $("<div class='container-notif'></div>")
+            const header = $("<div class='header-notif'></div>")
+            header.append($("<span></span>")).append("Admin Futsal - " + words[i+2] + " " + words[i+0])
+            container.append(header)
+            container.append(generateNotifBody(words[1]))
+            $(".notif-content").append(container);
+            i+=3
+        }
+
     }
 });

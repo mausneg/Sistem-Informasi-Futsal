@@ -95,7 +95,7 @@ $.ajax({
             const header = $("<div class='header-notif'></div>")
             header.append($("<span></span>")).append("Admin Futsal - " + words[i+2] + " " + words[i+0])
             container.append(header)
-            container.append(generateNotifBody(words[1]))
+            container.append(generateNotifBody(words[i+1]))
             $(".notif-content").append(container);
             i+=3
         }

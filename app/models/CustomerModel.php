@@ -80,7 +80,7 @@
             return $this->db->row();
         }
         public function checkout($data){
-            $query = "insert into payment values('',:noBooking,:idPaymentMethod,:paymentMethod,:amount,NOW())";
+            $query = "insert into payment values('',:noBooking,:idPaymentMethod,:paymentMethod,:amount,NOW(),'unpaid')";
             $this->db->query($query);
             $this->db->bind("noBooking",$data["checkout"]["noBooking"]);
             $this->db->bind("idPaymentMethod",$data["checkout"]["idPaymentMethod"]);

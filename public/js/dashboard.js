@@ -54,3 +54,6 @@ $(".card-footer-booking").click(function (e) {
 $(".card-footer-done").click(function (e) { 
     window.location.assign(baseurl+"/transaction")
 });
+$(".transaksi-list").children().on('click', function() {
+    window.location.assign(baseurl+"/transaction")
+  });

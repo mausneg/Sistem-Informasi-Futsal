@@ -22,7 +22,7 @@
 body{
     width: 100%;
     height: 100vh;
-    background-image: url("http://localhost/Sistem-Informasi-Futsal/public/image/Home Background.jpg");
+    background-image: url("http://localhost:8080/Sistem-Informasi-Futsal/public/image/Home Background.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
     background-position-x: 0%;

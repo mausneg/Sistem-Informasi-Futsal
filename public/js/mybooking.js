@@ -1,6 +1,7 @@
 $("#mybooking").css("backgroundColor", "white");
 $(".fa-list-check,.list-text-mybooking").addClass("text-list-select");
-var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+var baseurl = "http://localhost:8080/Sistem-Informasi-Futsal/public/"
+
 
 function bookingList(response) {
     $(".content-main-body").html("")

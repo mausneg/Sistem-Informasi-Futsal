@@ -3,5 +3,5 @@
     define("DB_USER","root");
     define("DB_PASS","");
     define("DB_NAME","sifootdb");
-    define('BASEURL', "http://localhost/Sistem-Informasi-Futsal/public/");
+    define('BASEURL', "http://localhost:8080/Sistem-Informasi-Futsal/public/");
 ?>

@@ -1,7 +1,8 @@
 $("#payment").css("backgroundColor", "white")
 $(".fa-money-bill-wave,.list-text-payment").addClass("text-list-select")
 
-var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+var baseurl = "http://localhost:8080/Sistem-Informasi-Futsal/public/"
+
 
 first = true
 if(first){

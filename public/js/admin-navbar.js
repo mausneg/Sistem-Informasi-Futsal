@@ -1,4 +1,4 @@
-var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+var baseurl = "http://localhost:8080/Sistem-Informasi-Futsal/public/"
 
 $(".list-btn-dashboard").click(function () { 
     window.location.assign(baseurl+"dashboard");

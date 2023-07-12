@@ -1,6 +1,7 @@
 $("#transaction").css("backgroundColor", "#dbedee");
 $(".fa-money-bill-wave,.list-text-transaction").addClass("text-list-select");
-var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+var baseurl = "http://localhost:8080/Sistem-Informasi-Futsal/public/"
+
 
 function generateStatus(words) {
     const status = $("<select class='payment-status' name='payment-status'></select>")

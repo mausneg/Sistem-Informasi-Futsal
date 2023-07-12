@@ -56,7 +56,7 @@ CREATE TABLE `booking` (
   PRIMARY KEY (`no_booking`),
   KEY `FK_customer_booking` (`email_customer`),
   CONSTRAINT `FK_customer_booking` FOREIGN KEY (`email_customer`) REFERENCES `customer` (`email_customer`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `booking` (
 
 LOCK TABLES `booking` WRITE;
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
-INSERT INTO `booking` VALUES (55,'Vinyl','2023-06-29 09:00:00.000000','confirm','amir@gmail.com');
+INSERT INTO `booking` VALUES (55,'Vinyl','2023-06-29 09:00:00.000000','confirm','amir@gmail.com'),(56,'Sintetis','2023-06-28 09:00:00.000000','confirm','amir@gmail.com'),(57,'Sintetis','2023-06-29 09:00:00.000000','pending','amir@gmail.com'),(58,'Sintetis','2023-06-29 13:00:00.000000','confirm','agi@gmail.com'),(59,'Vinyl','2023-06-26 22:00:00.000000','pending','agi@gmail.com'),(60,'Vinyl','2023-06-26 22:00:00.000000','confirm','agi@gmail.com'),(61,'Sintetis','2023-06-28 17:00:00.000000','pending','amir@gmail.com');
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +91,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES ('amir@gmail.com','amirhamzah','09834192181','$2y$10$cLTuH0R6MU9EIbppQjIV8OczcEW4lkif8saNPk.xmzsZQVj7hW2KK'),('q@gmail.com','q','q','$2y$10$QkoXFuyPmrfjDpT7ZQQpq.wn7Ju5SBOF.D/krWDDuSxMhj/B4J4Gq'),('sam@gmail.com','sam123','081234567890','$2y$10$6p1dEnAZkjp6.dwZJF527ubiGP5EDQOIxgJHbGKPUmMRnMOZY3SEy');
+INSERT INTO `customer` VALUES ('agi@gmail.com','afrizkiagi','081234567890','$2y$10$iuwuzjgVQxt6ElrGboZYnOlKyQht/.teWc/2l5.g3BlIjzTiX94za'),('amir@gmail.com','amirhamzah','123','$2y$10$pdWmk.MW88IbQu98gQV87Og7HZktJhySX39sdH/CNTcRItrmYVzIK'),('q@gmail.com','q','q','$2y$10$QkoXFuyPmrfjDpT7ZQQpq.wn7Ju5SBOF.D/krWDDuSxMhj/B4J4Gq'),('sam@gmail.com','sam123','081234567890','$2y$10$6p1dEnAZkjp6.dwZJF527ubiGP5EDQOIxgJHbGKPUmMRnMOZY3SEy');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +117,7 @@ CREATE TABLE `notification` (
   CONSTRAINT `notification_admin_email_admin_fk` FOREIGN KEY (`email_admin`) REFERENCES `admin` (`email_admin`),
   CONSTRAINT `notification_booking_no_booking_fk` FOREIGN KEY (`no_booking`) REFERENCES `booking` (`no_booking`),
   CONSTRAINT `notification_customer_email_customer_fk` FOREIGN KEY (`email_customer`) REFERENCES `customer` (`email_customer`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +126,7 @@ CREATE TABLE `notification` (
 
 LOCK TABLES `notification` WRITE;
 /*!40000 ALTER TABLE `notification` DISABLE KEYS */;
-INSERT INTO `notification` VALUES (28,'amir@gmail.com','payment_accept','2023-06-15 13:45:22',0,'mausneg@gmail.com',55);
+INSERT INTO `notification` VALUES (28,'amir@gmail.com','payment_accept','2023-06-15 13:45:22',0,'mausneg@gmail.com',55),(31,'amir@gmail.com','payment_accept','2023-06-15 16:38:26',0,'mausneg@gmail.com',56),(32,'agi@gmail.com','payment_accept','2023-06-16 02:06:47',0,'mausneg@gmail.com',58),(33,'agi@gmail.com','payment_accept','2023-06-16 05:40:38',0,'mausneg@gmail.com',60);
 /*!40000 ALTER TABLE `notification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +151,7 @@ CREATE TABLE `payment` (
   KEY `payment_admin_email_admin_fk` (`email_admin`),
   CONSTRAINT `fk_payment_booking` FOREIGN KEY (`no_booking`) REFERENCES `booking` (`no_booking`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `payment_admin_email_admin_fk` FOREIGN KEY (`email_admin`) REFERENCES `admin` (`email_admin`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,7 +160,7 @@ CREATE TABLE `payment` (
 
 LOCK TABLES `payment` WRITE;
 /*!40000 ALTER TABLE `payment` DISABLE KEYS */;
-INSERT INTO `payment` VALUES (47,55,'08123456789','dana',120000,'2023-06-15 20:48:24','paid','mausneg@gmail.com');
+INSERT INTO `payment` VALUES (47,55,'123','dana',120000,'2023-06-15 20:48:24','paid','mausneg@gmail.com'),(48,56,'12345','gopay',120000,'2023-06-15 22:40:47','paid','mausneg@gmail.com'),(49,57,'1244','shopee',120000,'2023-06-16 00:06:00','unpaid','mausneg@gmail.com'),(50,58,'08123456789','dana',120000,'2023-06-16 10:02:42','paid','mausneg@gmail.com'),(51,59,'08123464892','shopee',120000,'2023-06-16 13:39:40','unpaid',NULL),(52,60,'0812638133','dana',120000,'2023-06-16 13:40:02','paid','mausneg@gmail.com'),(53,61,'123','dana',120000,'2023-06-17 23:21:09','unpaid',NULL);
 /*!40000 ALTER TABLE `payment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -173,4 +173,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-15 22:24:59
+-- Dump completed on 2023-06-20 17:22:01

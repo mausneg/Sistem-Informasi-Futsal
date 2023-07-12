@@ -1,4 +1,4 @@
-var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+var baseurl = "http://localhost:8080/Sistem-Informasi-Futsal/public/"
 
 $(".flasher-button").click(function () { 
     $(".container-flasher").html("")
@@ -88,7 +88,6 @@ $.ajax({
     url: baseurl+"Notification/getNotif",
     success: function (response) {
         const words = response.split(" ");
-        console.log(words)
         let i = 0
         while (i < words.length-1) {
             const container = $("<div class='container-notif'></div>")

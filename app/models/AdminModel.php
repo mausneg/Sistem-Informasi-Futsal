@@ -92,6 +92,7 @@
                 $this->db->bind("no_booking", $data["no_booking"]);
                 $this->db->bind("email_customer", $emailResult["email_customer"]); 
                 $this->db->bind("admin", $_SESSION["account"]["email"]);
+                
                 $this->db->execute();
                 return $this->db->row();
 

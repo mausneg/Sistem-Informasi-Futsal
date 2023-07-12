@@ -1,6 +1,7 @@
 $("#home").css("backgroundColor", "white");
 $(".fa-house,.list-text-home").addClass("text-list-select");
-var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+var baseurl = "http://localhost:8080/Sistem-Informasi-Futsal/public/"
+
 
 document.getElementsByClassName("info-sintetis")[0].addEventListener("mouseenter",function(){
     const text = "This type of field is a futsal field whose surface uses synthetic grass, this artificial grass can be installed according to the size of the futsal field.This type of field is enjoyed by many futsal players because when they fall it doesn't hurt too much and doesn't cause injuries."

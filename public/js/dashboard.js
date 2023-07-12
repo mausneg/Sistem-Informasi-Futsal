@@ -1,7 +1,8 @@
 $("#dashboard").css("backgroundColor", "#dbedee");
 $(".fa-chart-line,.list-text-dashboard").addClass("text-list-select");
 
-var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+var baseurl = "http://localhost:8080/Sistem-Informasi-Futsal/public/"
+
 
 $.ajax({
     type: "POST",

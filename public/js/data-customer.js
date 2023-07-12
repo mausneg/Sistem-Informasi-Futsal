@@ -1,7 +1,8 @@
 $("#data-customer").css("backgroundColor", "#dbedee");
 $(".fa-users,.list-text-data-customer").addClass("text-list-select");
 
-var baseurl = "http://localhost/Sistem-Informasi-Futsal/public/"
+var baseurl = "http://localhost:8080/Sistem-Informasi-Futsal/public/"
+
 
 $.ajax({
     type: "POST",
